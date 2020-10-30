@@ -1,0 +1,62 @@
+
+
+*{
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+
+
+.caixa{
+    background-color:#f5554a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+
+}
+
+.sub{
+    box-shadow:1px 1px 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80vw;
+    height: 80vh;
+    font-size: x-large;
+    justify-content: space-around;
+    background-color: white;
+    border-radius: 20px;
+    align-items: flex-start;
+    
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.botao > button{
+border-radius: 30px;
+background-color: #7daf42;
+padding: 10px;
+border: 0px;
+}
+
+.final > button{
+    text-align: center;
+    border-radius: 30px;
+    padding: 5px;
+    width: 40px;
+}
+
+.sel > button{
+    text-align: center;
+    border-radius: 10px;
+    padding: 5px;
+    background-color:#7daf42;
+}
+
