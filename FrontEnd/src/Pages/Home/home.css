@@ -1,0 +1,77 @@
+*{
+    border: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: personal;
+}
+
+.inicio {
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+}
+
+@font-face{
+    font-family: chicken;
+    src: url(./fontes/Chicken\ Quiche.otf);
+}
+
+.titservicos{
+    color: #000000;
+    font-size: 45px;
+    text-align: center;
+    font-family:chicken;
+}
+
+.subbox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 40vh;
+    width: 35vh;
+}
+
+.servicos{
+    display: flex;
+    background-color:powderblue;
+    height: 70vh;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.imgservicos{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.minibox{
+    text-align: center;
+    margin: 5px;
+}
+
+.minicontainer5{
+    width: 65vw;
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.A button{
+    background-color: white;
+    font-size: 16px;
+    border:2px solid black;
+    border-radius: 15px;
+    width: 6vw;
+    height: 5vh;
+    font-weight: bold;
+}
+
+.A button:hover{
+    box-shadow: 5px 5px 5px gray;
+    cursor: pointer;
+    border: #7255b2 solid 2px;
+}

@@ -1,0 +1,44 @@
+.menu{
+    height: 14vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: #0e0e7d;
+}
+
+.submenu{
+    width: 90vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    color: black;
+}
+
+.itensmenu{
+    width: 45vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 21px;
+    color: white;
+}
+
+.itensmenu a{
+    text-decoration: none;
+    color: white;
+}
+
+.itensmenu a:hover{
+    text-shadow: 5px 5px 5px black;
+}
+
+.sep{
+    width: 4px;
+    height: 26px;
+    background-color: white;
+    border-radius: 25px;
+}
