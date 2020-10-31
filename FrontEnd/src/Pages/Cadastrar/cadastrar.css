@@ -1,8 +1,7 @@
 *{
-    border: 0px;
+    padding: 0px;
     margin: 0px;
     box-sizing: border-box;
-    font-family: personal;
 }
 
 @font-face{
