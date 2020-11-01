@@ -56,7 +56,7 @@ export default function Cadastrar()  {
                 <div className="fera">
 
                     <div className="container4">
-                        <img src={detalhes} width="300px" height="300px" />
+                        <img src={detalhes} width="300px" height="300px" alt="erro" />
                     </div>
 
                     <div className="container3">
@@ -154,7 +154,7 @@ export default function Cadastrar()  {
                     </div> 
             
                     <div className="container5">
-                        <img src={familia} width="300px" height="300px" />
+                        <img src={familia} width="300px" height="300px" alt="erro" />
                     </div>
 
                 </div>
