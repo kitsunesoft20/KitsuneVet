@@ -9,7 +9,7 @@ namespace kitsunevet.Controllers
 {
     public class LoginController
     {
-        public Models.Response.LoginResponse Logar (Models.Request.LoginRequest request){
+        public BackEnd.Controllers.Response.LoginResponse Logar (BackEnd.Controllers.Request.LoginRequest request){
             
         }
     }

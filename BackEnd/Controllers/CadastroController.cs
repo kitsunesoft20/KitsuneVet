@@ -12,7 +12,7 @@ namespace kitsunevet.Controllers
     {
         
         [HttpPost]
-        public Models.Response.CadastroClienteResponse Salvar(Models.Request.CadastroClienteRequest request)
+        public BackEnd.Controllers.Response.CadastroClienteResponse Salvar(BackEnd.Controllers.Request.CadastroClienteRequest request)
         {
             Models.veterinarioContext ctx = new Models.veterinarioContext();
 
@@ -41,7 +41,7 @@ namespace kitsunevet.Controllers
             ctx.TbCliente.Add(cliente);
             ctx.SaveChanges();
 
-            Models.Response.CadastroClienteResponse response = new Models.Response.CadastroClienteResponse();
+            BackEnd.Controllers.Response.CadastroClienteResponse response = new BackEnd.Controllers.Response.CadastroClienteResponse();
 
             response.Nome = cliente.NmCliente;
             response.Email = cliente.DsEmail;
