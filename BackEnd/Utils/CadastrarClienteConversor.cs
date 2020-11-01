@@ -4,16 +4,17 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BackEnd.Utils
+namespace kitsunevet.Utils
 {
     public class CadastrarClienteConversor
     {
 
-        public Models
-
         Models.veterinarioContext ctx = new Models.veterinarioContext();
         Models.TbLogin login = new Models.TbLogin();
         Models.TbCliente cliente = new Models.TbCliente();
+        Models.Response.CadastroClienteResponse response = new Models.Response.CadastroClienteResponse();
+
+        public Models.TbLogin Salvarlogin(Models.Request.CadastroClienteRequest request){
 
             login.DsEmail = request.Email;
             login.DsSenha = request.Senha;
@@ -21,7 +22,11 @@ namespace BackEnd.Utils
             ctx.TbLogin.Add(login);
             ctx.SaveChanges();
 
+            return 
 
+        }
+
+        public Models.TbCliente SalvarCliente(Models.Request.CadastroClienteRequest request){
 
             cliente.NmCliente = request.Nome;
             cliente.DsEmail = request.Email;
@@ -38,7 +43,9 @@ namespace BackEnd.Utils
             ctx.TbCliente.Add(cliente);
             ctx.SaveChanges();
 
-            Models.Response.CadastroClienteResponse response = new Models.Response.CadastroClienteResponse();
+        }
+
+        public Models.Response.CadastroClienteResponse responsefinal (Models.Request.CadastroClienteRequest request){
 
             response.Nome = cliente.NmCliente;
             response.Email = cliente.DsEmail;
@@ -53,6 +60,8 @@ namespace BackEnd.Utils
             response.Sexo = cliente.DsSexo;
             response.IdLogin = login.IdLogin;
             response.IdCliente = cliente.IdCliente;
+
+        }
 
     }
 }
