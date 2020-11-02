@@ -1,13 +1,9 @@
-
-
 *{
     margin: 0px;
     box-sizing: border-box;
 }
 
-
-
-.caixa{
+.corpo{
     background-color:#f5554a;
     display: flex;
     flex-direction: column;
@@ -15,10 +11,9 @@
     width: 100vw;
     height: 100vh;
     justify-content: center;
-
 }
 
-.sub{
+.baixo{
     box-shadow:1px 1px 5px;
     display: flex;
     flex-direction: column;
@@ -31,32 +26,17 @@
     border-radius: 20px;
 }
 
-.info{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+
+
+
+
+
+
+
+.table,tr,th,td{
+border: 1px solid black;
 }
 
-.botao > button{
-border-radius: 30px;
-background-color: #7daf42;
-padding: 10px;
-border: 0px;
+.table,th,td{
+    padding: 7px;
 }
-
-.final > button{
-    text-align: center;
-    border-radius: 30px;
-    padding: 5px;
-    width: 40px;
-    border: 0%;
-}
-
-.sel > button{
-    text-align: center;
-    border-radius: 10px;
-    padding: 5px;
-    background-color:#7daf42;
-    border: 0%;
-}
-

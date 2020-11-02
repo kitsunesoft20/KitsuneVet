@@ -1,13 +1,9 @@
-
-
 *{
     margin: 0px;
     box-sizing: border-box;
 }
 
-
-
-.caixa{
+.corp{
     background-color:#f5554a;
     display: flex;
     flex-direction: column;
@@ -15,10 +11,9 @@
     width: 100vw;
     height: 100vh;
     justify-content: center;
-
 }
 
-.sub{
+.mini{
     box-shadow:1px 1px 5px;
     display: flex;
     flex-direction: column;
@@ -31,32 +26,44 @@
     border-radius: 20px;
 }
 
-.info{
+
+
+.cai{
+width: 60vw;
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+}
+
+.hor{
+    width: 60vw;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
-.botao > button{
-border-radius: 30px;
-background-color: #7daf42;
-padding: 10px;
-border: 0px;
+.su{
+    width: 30vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;  
 }
 
-.final > button{
+.bai{
+    width: 40vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.su > input{
+    width: 20;
+}
+
+.but > button{
     text-align: center;
-    border-radius: 30px;
-    padding: 5px;
-    width: 40px;
-    border: 0%;
-}
-
-.sel > button{
-    text-align: center;
-    border-radius: 10px;
+    border-radius: 15px;
     padding: 5px;
     background-color:#7daf42;
     border: 0%;
 }
-
