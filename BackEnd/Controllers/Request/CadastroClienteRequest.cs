@@ -1,7 +1,7 @@
 
 using System;
 
-namespace kitsunevet.Models.Request
+namespace BackEnd.Controllers.Request
 {
     public class CadastroClienteRequest
     {

@@ -36,7 +36,7 @@ export default function Cadastrar()  {
                 telefone: Telefone,
                 cpf: Cpf,
                 rg: Rg,
-                endereço: Endereco,
+                endereco: Endereco,
                 complemento: Complemento,
                 cep: Cep,
                 senha: Senha
@@ -56,7 +56,7 @@ export default function Cadastrar()  {
                 <div className="fera">
 
                     <div className="container4">
-                        <img src={detalhes} width="300px" height="300px" />
+                        <img src={detalhes} width="300px" height="300px" alt="erro" />
                     </div>
 
                     <div className="container3">
@@ -133,14 +133,14 @@ export default function Cadastrar()  {
                                     onChange ={x => setNascimento(x.target.value)}
                                 />
 
-                                <select name="Sexo" placeholder="Sexo">
+                                <select name="Sexo" placeholder="Sexo"
                                     value={Sexo}
-                                    onChange ={x => setSexo(x.target.value)}
-                                    <option value="" disabled selected> </option>
-                                    <option value="Feminino"> Feminino </option>
-                                    <option value="Masculino"> Masculino </option>
-                                    <option value="Prefiro não informar"> Prefiro não informar </option>
-                                    <option value="Outro"> Outro </option>
+                                    onChange ={x => setSexo(x.target.value)}>
+                                        <option value="" disabled selected> </option>
+                                        <option value="Feminino"> Feminino </option>
+                                        <option value="Masculino"> Masculino </option>
+                                        <option value="Prefiro não informar"> Prefiro não informar </option>
+                                        <option value="Outro"> Outro </option>
                                 </select>
 
                             </form>
@@ -154,7 +154,7 @@ export default function Cadastrar()  {
                     </div> 
             
                     <div className="container5">
-                        <img src={familia} width="300px" height="300px" />
+                        <img src={familia} width="300px" height="300px" alt="erro" />
                     </div>
 
                 </div>
