@@ -85,3 +85,6 @@ C:\Users\User\Desktop\Frei\1Bruno\WEB\Veterinário\API_VET\kitsunevet\BackEnd\ob
 C:\Users\User\Desktop\Frei\1Bruno\WEB\Veterinário\API_VET\kitsunevet\BackEnd\obj\Debug\netcoreapp3.1\kitsunevet.dll
 C:\Users\User\Desktop\Frei\1Bruno\WEB\Veterinário\API_VET\kitsunevet\BackEnd\obj\Debug\netcoreapp3.1\kitsunevet.pdb
 C:\Users\User\Desktop\Frei\1Bruno\WEB\Veterinário\API_VET\kitsunevet\BackEnd\obj\Debug\netcoreapp3.1\kitsunevet.genruntimeconfig.cache
+C:\Users\User\Desktop\Frei\1Bruno\WEB\Veterinário\API_VET\KitsuneVet\BackEnd\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\User\Desktop\Frei\1Bruno\WEB\Veterinário\API_VET\KitsuneVet\BackEnd\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\User\Desktop\Frei\1Bruno\WEB\Veterinário\API_VET\KitsuneVet\BackEnd\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
