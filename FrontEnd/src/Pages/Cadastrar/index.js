@@ -2,6 +2,9 @@
 import React, { useState } from 'react';
 import './cadastrar.css';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import Cabecalho from '../../Components/Cabecalho'
 import Rodape from '../../Components/Rodape'
 
@@ -27,8 +30,9 @@ export default function Cadastrar()  {
 
 
     const salvarClick = async () => {
-        const response = await 
-            api.CadastrarCliente({
+
+        try {
+            const request = {
                 nome: Nome,
                 sexo: Sexo,
                 nascimento: Nascimento,
@@ -40,11 +44,19 @@ export default function Cadastrar()  {
                 complemento: Complemento,
                 cep: Cep,
                 senha: Senha
-            });
+            };
+            const resp = await api.CadastrarCliente(request);
+            toast("Cadastrado com Sucesso 😼");
+        } 
 
-            alert('Funfou');
-
+        catch (e) {
+            if(e.response.data.erro)
+                toast.error(e.response.data.erro);
+            else
+                toast.error('Houve um erro! Tente novamente.');
         }
+
+    }
 
     return (
         <div>
@@ -86,46 +98,55 @@ export default function Cadastrar()  {
                                 <input type="text" name="Nome"
                                     value={Nome}
                                     onChange ={x => setNome(x.target.value)}
+                                    placeholder="Nome Completo"
                                 />
                         
                                 <input type="text" name="email"
                                     value={Email}
                                     onChange ={x => setEmail(x.target.value)}
+                                    placeholder="Email"
                                 />
 
                                 <input type="text" name="rg" 
                                     value={Rg}
                                     onChange ={x => setRg(x.target.value)}
+                                    placeholder="Número do Rg (sem pontuação)"
                                 />
                         
                                 <input type="fnumber" name="cpf" 
                                     value={Cpf}
                                     onChange ={x => setCpf(x.target.value)}
+                                    placeholder="Número do Cpf (sem pontuação)"
                                 />
                         
                                 <input type="password" name="senha" 
                                     value={Senha}
                                     onChange ={x => setSenha(x.target.value)}
+                                    placeholder="Senha com 8 caracteres ou mais"
                                 />
                        
                                 <input type="text" name="telefone" 
                                     value={Telefone}
                                     onChange ={x => setTelefone(x.target.value)}
+                                    placeholder="Telefone para contato, com DDD"
                                 />
                         
                                 <input type="text" name="endereco" 
                                     value={Endereco}
                                     onChange ={x => setEndereco(x.target.value)}
+                                    placeholder="Rua e número da residência"
                                 />
 
                                 <input type="text" name="complemento" 
                                     value={Complemento}
                                     onChange ={x => setComplemento(x.target.value)}
+                                    placeholder="(Ex: Casa B)"
                                 />
 
                                 <input type="text" name="cep" 
                                     value={Cep}
                                     onChange ={x => setCep(x.target.value)}
+                                    placeholder="CEP"
                                 />
 
                                 <input type="date" name="datanasc" 
@@ -162,6 +183,8 @@ export default function Cadastrar()  {
             </div>
     
             <Rodape />
+
+            <ToastContainer/>
 
         </div>
     );
