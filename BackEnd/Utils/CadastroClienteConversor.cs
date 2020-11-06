@@ -1,4 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace kitsunevet.Utils
 {
@@ -50,6 +54,13 @@ namespace kitsunevet.Utils
             response.IdCliente = cliente.IdCliente;
 
             return response;
+
+        }
+
+        public bool CadastroExistente(string email){
+
+            bool existe = ctx.TbCliente.Any(x => x.DsEmail == email);
+            return existe;
 
         }
 
