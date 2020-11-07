@@ -6,10 +6,10 @@
 
 @font-face{
     font-family: chicken;
-    src: url(./fontes/Chicken\ Quiche.otf);
+    src: url(./fontes/ChickenQuiche.otf);
 }
 
-.inicio {
+.inicioBeT{
     background-position: center;
     display: flex;
     flex-direction: column;
@@ -17,19 +17,27 @@
     background-image: linear-gradient(315deg, #63a4ff 0%, #83eaf1 74%);
 }
 
-.box4{
+.titBeT{
     font-family: chicken;
     font-size: 55px;
 }
 
-.fera{
+.containerBeT{
     display:flex;
     flex-direction: row;
-    width: 100%;
+    width: 98vw;
     height: 100vh;
 }
 
-.container3{
+.subboxBeT{
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.subboxBeT2{
     display: flex;
     height: 100%;
     flex-direction: column;
@@ -37,15 +45,7 @@
     justify-content: space-evenly;
 }
 
-.container4{
-    display: flex;
-    flex-grow: 1;
-    align-items: center;
-    flex-direction: column;
-    justify-content:flex-start;
-}
-
-.container5{
+.subboxBeT3{
     display: flex;
     flex-grow: 1;
     align-items: center;
@@ -53,19 +53,7 @@
     justify-content: flex-end;
 }
 
-.elsa form input, select{
-    font-size: 15px;
-    padding: 3px;
-    padding-left: 15px;
-    border: 1px solid black;
-    border-radius: 15px;
-    width: 20vw;
-    height: 4vh;
-
-   
-}
-
-.elsa{
+.boxBeT{
     font-size:20px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     width: 37vw;
@@ -74,7 +62,24 @@
     justify-content: space-evenly;
 }
 
-.dsformularios{
+.boxBeT select, .boxBeT input[type=text], .boxBeT input[type=time], .boxBeT input[type=date]{
+    font-size: 15px;
+    padding: 3px;
+    padding-left: 15px;
+    border: 1px solid black;
+    border-radius: 15px;
+    width: 20vw;
+    height: 4vh;
+    box-shadow: 5px 5px 5px gray;
+}
+
+.boxBeT input[type=checkbox]{
+    width: 4vw;
+    height: 4vh;
+    border: 5px black solid;
+}
+
+.dsformulariosBeT{
     height: 55vh;
     display: flex;
     flex-direction:column;
@@ -82,7 +87,7 @@
     align-items: flex-end;
 }
 
-.formularios{
+.formulariosBeT{
     height: 55vh;
     display: flex;
     flex-direction: column;

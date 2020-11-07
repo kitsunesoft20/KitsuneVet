@@ -5,7 +5,7 @@
     font-family: personal;
 }
 
-.inicio {
+.iniciohome{
     background-position: center;
     display: flex;
     flex-direction: column;
@@ -23,7 +23,7 @@
     font-family:chicken;
 }
 
-.subbox{
+.subboxH{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -32,7 +32,7 @@
     width: 35vh;
 }
 
-.servicos{
+.servicoshome{
     display: flex;
     background-image: linear-gradient(315deg, #63a4ff 0%, #83eaf1 74%);    
     height: 70vh;
@@ -48,7 +48,7 @@
     justify-content: center;
 }
 
-.minibox{
+.miniboxH{
     text-align: center;
     margin: 5px;
 }
