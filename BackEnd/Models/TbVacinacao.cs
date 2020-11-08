@@ -11,16 +11,22 @@ namespace kitsunevet.Models
         [Key]
         [Column("id_vacinacao")]
         public int IdVacinacao { get; set; }
+
         [Column("id_cliente")]
         public int? IdCliente { get; set; }
+
         [Column("id_pet")]
         public int? IdPet { get; set; }
+
         [Column("dt_vacinacao", TypeName = "datetime")]
         public DateTime? DtVacinacao { get; set; }
+
         [Column("ds_vacina", TypeName = "varchar(100)")]
         public string DsVacina { get; set; }
+
         [Column("ds_local", TypeName = "varchar(100)")]
         public string DsLocal { get; set; }
+
         [Column("ds_observacoes", TypeName = "varchar(255)")]
         public string DsObservacoes { get; set; }
 
