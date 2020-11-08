@@ -1,3 +1,6 @@
+
+using System;
+
 namespace BackEnd.Controllers.Response
 {
     public class VacinacaoResponse
@@ -8,7 +11,7 @@ namespace BackEnd.Controllers.Response
 
         public int? IdPet { get; set; }
 
-        public DateTime? Data { get; set; }
+        public DateTime Data { get; set; }
 
         public string Vacina { get; set; }
 

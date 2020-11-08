@@ -11,18 +11,25 @@ namespace kitsunevet.Models
         [Key]
         [Column("id_hotel")]
         public int IdHotel { get; set; }
+
         [Column("id_cliente")]
         public int? IdCliente { get; set; }
+
         [Column("id_pet")]
         public int? IdPet { get; set; }
+
         [Column("ds_delivery")]
         public bool? DsDelivery { get; set; }
+
         [Column("dt_entrada", TypeName = "datetime")]
         public DateTime? DtEntrada { get; set; }
+
         [Column("dt_saida", TypeName = "datetime")]
         public DateTime? DtSaida { get; set; }
+
         [Column("ds_local", TypeName = "varchar(100)")]
         public string DsLocal { get; set; }
+        
         [Column("ds_observacoes", TypeName = "varchar(255)")]
         public string DsObservacoes { get; set; }
 

@@ -14,7 +14,7 @@ export default class KitsuneVetApi {
     }
 
     async FazerLogin(login){
-        const resp = await api.get('/login');
+        const resp = await api.post('/login', login);
         return resp;
     }
 

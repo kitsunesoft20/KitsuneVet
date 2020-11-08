@@ -1,3 +1,6 @@
+
+using System;
+
 namespace BackEnd.Controllers.Request
 {
     public class VacinacaoRequest
@@ -6,12 +9,12 @@ namespace BackEnd.Controllers.Request
 
         public int? IdPet { get; set; }
 
-        public DateTime? DtVacinacao { get; set; }
+        public DateTime Data { get; set; }
 
-        public string DsVacina { get; set; }
+        public string Vacina { get; set; }
 
-        public string DsLocal { get; set; }
+        public string Local { get; set; }
 
-        public string DsObservacoes { get; set; }
+        public string Observacoes { get; set; }
     }
 }

@@ -13,7 +13,7 @@ namespace kitsunevet.Controllers
     public class LoginController : ControllerBase
     {
         
-        [HttpGet]
+        [HttpPost]
         public List<Models.TbCliente> Login (BackEnd.Controllers.Request.LoginRequest request){
 
             Database.LoginDatabase logando = new Database.LoginDatabase();
