@@ -689,7 +689,7 @@ export default function CadastroPet()  {
                             <option value="Macho"> Macho </option>
                         </select>
 
-                        <input type="text" placeholder="Usa algum tipo de medicamento? Quais?" className="medicamentosCeP"/>
+                        <textarea placeholder="Usa algum tipo de medicamento? Quais?" className="medicamentosCeP"/>
 
                     </form>
 
