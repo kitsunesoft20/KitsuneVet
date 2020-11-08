@@ -18,7 +18,7 @@ export default function BanhoeTosa()  {
             <div className="containerBeT">
     
                 <div className="subboxBeT">
-                    <img src={imagem1} width="300px" height="300px" />
+                    <img src={imagem1} width="300px" height="300px" alt="erro"/>
                 </div>
     
                 <div className="subboxBeT2">
@@ -73,7 +73,7 @@ export default function BanhoeTosa()  {
                 </div> 
                 
                 <div className="subboxBeT3">
-                    <img src={imagem2} width="300px" height="300px" />
+                    <img src={imagem2} width="300px" height="300px" alt="erro"/>
                 </div>
     
             </div>

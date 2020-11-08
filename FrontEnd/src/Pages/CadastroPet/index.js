@@ -15,7 +15,7 @@ export default function CadastroPet()  {
         <div class="boxCPet">
 
             <div class="subboxCPet">
-                <img src="../CadastrarPet/imagens/celular.png" width="300px" height="300px" />
+                <img src="../CadastrarPet/imagens/celular.png" width="300px" height="300px" alt="erro"/>
             </div>
 
             <div class="subboxCPet2">
@@ -702,7 +702,7 @@ export default function CadastroPet()  {
             </div> 
             
             <div class="subboxCPet3">
-                <img src="../CadastrarPet/imagens/pet.png" width="300px" height="300px" />
+                <img src="../CadastrarPet/imagens/pet.png" width="300px" height="300px" alt="erro"/>
             </div>
 
         </div>
