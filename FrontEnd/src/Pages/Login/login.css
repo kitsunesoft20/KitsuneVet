@@ -55,3 +55,19 @@
     width: 18vw;
     height: 5vh;
 }
+
+.botaoLogin {
+    background: radial-gradient(circle, rgba(211,211,211,1) 0%, rgba(255,255,255,1) 100%);
+    font-size: 19px;
+    padding: 7px;
+    border: 1px solid black;
+    border-radius: 20px;
+    width: 12vw;
+    height: 6vh;
+}
+
+.botaoLogin:hover{
+    box-shadow: 5px 5px 5px gray;
+    cursor: pointer;
+    border: #7255b2 solid 2px;
+}

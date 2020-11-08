@@ -66,8 +66,8 @@ export default function BanhoeTosa()  {
     
                     </div>
     
-                    <div className="ana">
-                        <input type="submit" value="Agendar" />
+                    <div className="botaoBeT">
+                        <button> Agendar </button>
                     </div>
     
                 </div> 

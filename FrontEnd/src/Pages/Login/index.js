@@ -30,7 +30,7 @@ export default function Login()  {
                         <input type="password" className="senha"/>
                     </div>
 
-                    <button> Confirmar </button>
+                    <button className="botaoLogin"> Confirmar </button>
 
                 </div>
                         

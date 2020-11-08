@@ -88,28 +88,18 @@
     justify-content: space-between;
 }
 
-.ana input {
+.botaoCadastro button {
     background-color: white;
     font-size: 19px;
     padding: 7px;
-    border:1px solid black;
+    border: 1px solid black;
     border-radius: 20px;
     width: 12vw;
     height: 6vh;
 }
 
-button{
-    background-color: white;
-    font-size: 16px;
-    border:2px solid black;
-    border-radius: 15px;
-    width: 8vw;
-    height: 5vh;
-    font-weight: bold;
-}
-
-button:hover{
+.botaoCadastro button:hover{
     box-shadow: 5px 5px 5px gray;
     cursor: pointer;
-    border: goldenrod solid 2px;
+    border: #7255b2 solid 2px;
 }

@@ -93,7 +93,7 @@ export default function Cadastrar()  {
                                 <h4> Sexo: </h4>
                             </div>
 
-                            <form action="/action_page.php" className="formularios">
+                            <form className="formularios">
                         
                                 <input type="text" name="Nome"
                                     value={Nome}
@@ -168,7 +168,7 @@ export default function Cadastrar()  {
                                                     
                         </div>
 
-                        <div className="ana">
+                        <div className="botaoCadastro">
                             <button onClick={salvarClick}> Cadastrar </button>
                         </div>
 
