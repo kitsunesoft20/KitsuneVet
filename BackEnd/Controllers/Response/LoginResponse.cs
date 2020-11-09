@@ -3,13 +3,13 @@ namespace BackEnd.Controllers.Response
     public class LoginResponse
     {        
 
-        public int idLogin { get; set; }
+        public int IdCliente { get; set; }
+
+        public int IdLogin { get; set; }
 
         public string email { get; set; }
 
-        public string senha { get; set; }
-
-        public int IdCliente { get; set; }
+        public string NomeCliente { get; set; }
 
     }
 }

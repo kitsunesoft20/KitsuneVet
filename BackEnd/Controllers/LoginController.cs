@@ -14,11 +14,11 @@ namespace kitsunevet.Controllers
     {
         
         [HttpPost]
-        public List<Models.TbCliente> Login (BackEnd.Controllers.Request.LoginRequest request){
+        public BackEnd.Controllers.Response.LoginResponse Login (BackEnd.Controllers.Request.LoginRequest request){
 
             Database.LoginDatabase logando = new Database.LoginDatabase();
 
-            List<Models.TbCliente> response = logando.logar(request);
+            BackEnd.Controllers.Response.LoginResponse response = logando.logar(request);
 
             return response;
 
