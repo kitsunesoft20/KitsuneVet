@@ -1,12 +1,14 @@
 
-import React, { useState } from 'react';
-import { toast } from 'react-toastify';
+import React, { useRef, useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useHistory } from "react-router-dom";
 
 import './login.css';
 import Cabecalho from '../../Components/Cabecalho'
-
 import KitsuneVetApi from '../../services/KitsuneVetApi';
+
+import LoadingBar from 'react-top-loading-bar';
 
 const api = new KitsuneVetApi();
 
@@ -15,16 +17,37 @@ export default function Login()  {
     const [Email,setEmail] = useState('');
     const [Senha,setSenha] = useState('');
 
+    let history = useHistory();
+
+    const loadingBar = useRef(null);
+
+    const cookie = document.cookie;
+
     const logarClick = async () => {
 
         try {
+
+            loadingBar.current.continuousStart();
+
             const request = {
                 email: Email,
                 senha: Senha
             };
             const resp = await api.FazerLogin(request);
-            toast("Fez Login");
-        } 
+
+            toast.success("Logado!");
+
+            loadingBar.current.complete();
+
+            history.push({
+                pathname:("/"),
+                state:{
+                    logado: true,
+                    IdCliente: resp.IdCliente
+                }
+            })
+
+        }
 
         catch (e) {
             if(e.response.data.erro)
@@ -38,6 +61,12 @@ export default function Login()  {
     return (
 
         <div>
+            
+            <LoadingBar
+                height={4}
+                color='#f11946'
+                ref={loadingBar} 
+            />
 
             <Cabecalho />
 
@@ -70,6 +99,8 @@ export default function Login()  {
                 </div>
                         
             </div>
+
+            <ToastContainer />
 
         </div>
 
