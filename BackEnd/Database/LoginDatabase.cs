@@ -15,7 +15,7 @@ namespace kitsunevet.Database
             Models.veterinarioContext ctx = new Models.veterinarioContext();
 
             List<Models.TbCliente> Login = ctx.TbCliente.Include(x => x.IdLoginNavigation)
-                .Where(x => x.IdLoginNavigation.DsEmail == Request.email && x.IdLoginNavigation.DsSenha == Request.senha).ToList();
+                .FirstOrDefault(x => x.IdLoginNavigation.DsEmail == Request.email && x.IdLoginNavigation.DsSenha == Request.senha);
 
             BackEnd.Controllers.Response.LoginResponse response = new BackEnd.Controllers.Response.LoginResponse();
 

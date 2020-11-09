@@ -14,13 +14,21 @@ namespace kitsunevet.Controllers
     {
         
         [HttpPost]
-        public BackEnd.Controllers.Response.LoginResponse Login (BackEnd.Controllers.Request.LoginRequest request){
+        public ActionResult<BackEnd.Controllers.Response.LoginResponse> Login (BackEnd.Controllers.Request.LoginRequest request){
 
-            Database.LoginDatabase logando = new Database.LoginDatabase();
+            Business.LoginBusiness Business = new Business.LoginBusiness();
 
-            BackEnd.Controllers.Response.LoginResponse response = logando.logar(request);
-
-            return response;
+            try
+            {
+                BackEnd.Controllers.Response.LoginResponse response = Business.login(request);
+                return response;
+            }
+            catch (System.Exception ex)
+            {
+                return new BadRequestObjectResult(
+                    new BackEnd.Controllers.Response.ErroResponse(ex, 400)
+                );
+            }
 
         }
 
