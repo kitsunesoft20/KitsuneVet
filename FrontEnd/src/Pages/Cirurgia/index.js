@@ -1,9 +1,101 @@
 
 import React from 'react'
 
+import './CirurgiaPet.css'
+
+import Cabecalho from '../../Components/Cabecalho'
+import Rodape from '../../Components/Rodape'
+
 export default function Cirurgia()  {
     return (
-            <h1>Cirurgia</h1>
+        <body>
+            
+            <Cabecalho />
+
+            <div class="inicio">
+
+                <div class="fera">
+
+                    <div class="container4">
+                        <img src="../CirurgiaPet/imagens/cirurgia01.png" width="300px" height="300px" />
+                    </div>
+
+                    <div class="container3">
+
+                        <div class="box4"> 
+                            {'{'} Cirurgia {'}'}
+                        </div>
+
+                        <div class="elsa">
+
+                            <div class="dsformularios">
+
+                                <h4> Tipo de Cirurgia: </h4>
+                                <h4> Observações: </h4>
+                                <h4> Data da Cirurgia:</h4>
+                                <h4> Horario: </h4>
+                                <h4> Pet: </h4>
+
+                            </div>
+                                        
+                            <form class="formularios">
+
+                            <select name="cirurgias" id="cirurgias" placeholder="cirurgias">
+                                <option value="" disabled selected> </option>
+                                <option value="ortopédicas"> Ortopédicas </option>
+                                <option value="coluna"> Coluna </option>
+                                <option value="abdominais"> Abdominais </option>
+                                <option value="Cárdicas">Cárdicas  </option>  
+                                <option value="biopsias de fígado"> Biopsias de fígado </option>
+                                <option value="biopsias de baço"> Biopsias de baço </option>
+                                <option value="biopsias de pulmão"> Biopsias de pulmão </option>
+                                <option value="biopsias de pele"> Biopsias de pele </option>
+                                <option value="remoção de tumores "> Remoção de tumores  </option>
+                                <option value="oftálmicas">Oftálmicas</option>
+                                <option value="oncológicas">Oncológicas</option>
+                                <option value="torax">Tórax</option>
+                                <option value="hemilaminectomia">Hemilaminectomia</option>
+                                <option value="fenestração ">Fenestração </option>
+                                <option value="amputação">Amputação</option>
+                                <option value="castração">Castração</option>
+                            </select>
+                            
+
+                                <input type="text" id="fname" name="fname" />
+                                
+                                <input type="date" id="fdate" name="fdate" />
+
+                                <input type="time" id="time" name="time" />
+                                
+                                
+
+                                <select name="tipodepet" id="tipodepet" placeholder="tipodepet">
+                                    <option value="" disabled selected> </option>
+                                    <option value="gato"> Gato </option>
+                                    <option value="cachorro"> Cachorro </option>
+                                </select>
+
+                            </form>
+
+                        </div>
+
+                        <div class="ana">
+                            <input type="submit" value="Agendar Cirurgia" />
+                        </div>
+
+                    </div> 
+                    
+                    <div class="container5">
+                        <img src="../CirurgiaPet/imagens/gatinho.png" width="300px" height="300px" />
+                    </div>
+
+                </div>
+
+            </div>
+            
+            <Rodape />
+
+        </body>
     );
 
 }
