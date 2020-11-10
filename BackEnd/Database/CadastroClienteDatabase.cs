@@ -4,10 +4,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace kitsunevet.Utils
+namespace kitsunevet.Database
 {
-    public class CadastroClienteConversor
+    public class CadastroClienteDatabase
     {
+        
         Models.veterinarioContext ctx = new Models.veterinarioContext();
 
         public BackEnd.Controllers.Response.CadastroClienteResponse salvarCadastro(BackEnd.Controllers.Request.CadastroClienteRequest request){

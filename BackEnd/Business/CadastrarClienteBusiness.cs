@@ -11,7 +11,7 @@ namespace kitsunevet.Business
 
         public BackEnd.Controllers.Response.CadastroClienteResponse SalvarCliente (BackEnd.Controllers.Request.CadastroClienteRequest request){
 
-            Utils.CadastroClienteConversor CvCadastro = new Utils.CadastroClienteConversor();
+            Database.CadastroClienteDatabase database = new Database.CadastroClienteDatabase();
 
             if (string.IsNullOrEmpty(request.Nome))
             throw new Exception("Nome Inválido");
@@ -37,10 +37,10 @@ namespace kitsunevet.Business
             if(request.Cep.Length != 8)
             throw new Exception("O CEP não poderá ter menos ou mais do que 8 números");
 
-            if(CvCadastro.CadastroExistente (request.Email))
+            if(database.CadastroExistente (request.Email))
             throw new Exception("O Email cadastrado já está vinculado a uma conta");
 
-            BackEnd.Controllers.Response.CadastroClienteResponse response = CvCadastro.salvarCadastro(request);
+            BackEnd.Controllers.Response.CadastroClienteResponse response = database.salvarCadastro(request);
 
             return response;
 

@@ -9,14 +9,18 @@ namespace kitsunevet.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class CadastroPetController
+    public class CadastroPetController : ControllerBase
     {
 
         [HttpPost]
         public BackEnd.Controllers.Response.CadastroPetResponse SalvarPet (BackEnd.Controllers.Request.CadastroPetRequest request)
         {
 
-            
+            Database.CadastroPetDatabase database = new Database.CadastroPetDatabase();
+
+            BackEnd.Controllers.Response.CadastroPetResponse response = database.cadastrarPet(request);
+
+            return response;            
         }
 
     }

@@ -12,7 +12,7 @@ namespace kitsunevet.Database
 
         Models.veterinarioContext ctx = new Models.veterinarioContext();
 
-        public Backend.Controllers.Response.CadastroPetResponse response (Backend.Controllers.Request.CadastroPetRequest request){
+        public BackEnd.Controllers.Response.CadastroPetResponse cadastrarPet (BackEnd.Controllers.Request.CadastroPetRequest request){
 
             Models.TbPet Pet = new Models.TbPet();
 
