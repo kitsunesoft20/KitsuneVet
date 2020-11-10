@@ -17,6 +17,9 @@ namespace kitsunevet.Controllers
         [HttpPost]
         public BackEnd.Controllers.Response.VacinacaoResponse agendarVacina (BackEnd.Controllers.Request.VacinacaoRequest request){
 
+            Models.TbPet Pets = ctx.TbPet.Include(x => x.IdClienteNavigation)
+                .FirstOrDefault(x => x.IdClienteNavigation.IdCliente == request.IdCliente);
+
             Models.TbVacinacao tbVacina = new Models.TbVacinacao();
 
             tbVacina.IdCliente = request.IdCliente;

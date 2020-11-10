@@ -9,7 +9,7 @@ import Cabecalho from '../../Components/Cabecalho'
 import KitsuneVetApi from '../../services/KitsuneVetApi';
 
 import LoadingBar from 'react-top-loading-bar';
-
+import { Redirect } from "react-router-dom";
 const api = new KitsuneVetApi();
 
 export default function Login()  {
@@ -33,24 +33,20 @@ export default function Login()  {
             };
 
             const resp = await api.FazerLogin(request);
-
             toast.success("Logado!");
-
             loadingBar.current.complete();
-
+            
         }
 
         catch (e) {
             if(e.response.data.erro){
                 toast.error("Erro, verifique suas credenciais e tente novamente");
-
                 loadingBar.current.complete();
             }
-
-            else
+            else{
                 toast.error('Houve um erro! Tente novamente.');
-
                 loadingBar.current.complete();
+            }
         }
 
 

@@ -40,7 +40,9 @@ export default function Vacina()  {
                 Local: Local,
                 IdCliente: IdCliente,
                 IdPet: IdPet,
-                Observacoes: Observacoes
+                Observacoes: Observacoes,
+                IdCliente: ,
+                IdPet: IdPet
             };
 
             const resp = await api.AgendarVacina(request);
