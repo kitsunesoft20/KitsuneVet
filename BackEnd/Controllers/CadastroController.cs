@@ -11,14 +11,16 @@ namespace kitsunevet.Controllers
     public class CadastroController : ControllerBase
     {
 
-        Business.CadastrarClienteBusiness CadastroBusiness = new Business.CadastrarClienteBusiness();
 
         [HttpPost]
         public ActionResult<BackEnd.Controllers.Response.CadastroClienteResponse> Salvar(BackEnd.Controllers.Request.CadastroClienteRequest request)
         {
             try
             {
+                Business.CadastrarClienteBusiness CadastroBusiness = new Business.CadastrarClienteBusiness();
+
                 BackEnd.Controllers.Response.CadastroClienteResponse response = CadastroBusiness.SalvarCliente(request);
+                
                 return response;
             }
             catch (System.Exception ex)

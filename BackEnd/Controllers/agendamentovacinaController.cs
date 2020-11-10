@@ -15,13 +15,22 @@ namespace kitsunevet.Controllers
         Models.veterinarioContext ctx = new Models.veterinarioContext();
 
         [HttpPost]
-        public BackEnd.Controllers.Response.VacinacaoResponse agendarVacina (BackEnd.Controllers.Request.VacinacaoRequest request){
+        public ActionResult <BackEnd.Controllers.Response.VacinacaoResponse> agendarVacina (BackEnd.Controllers.Request.VacinacaoRequest request){
 
-            Business.AgendamentoVacinaBusiness business = new Business.AgendamentoVacinaBusiness();
+            try
+            {
+                Business.AgendamentoVacinaBusiness business = new Business.AgendamentoVacinaBusiness();
 
-            BackEnd.Controllers.Response.VacinacaoResponse response = business.AgendarVacina(request);
+                BackEnd.Controllers.Response.VacinacaoResponse response = business.AgendarVacina(request);
 
-            return response;
+                return response;
+            }
+            catch (System.Exception ex)
+            {
+                return new BadRequestObjectResult(
+                    new BackEnd.Controllers.Response.ErroResponse(ex, 400)
+                );
+            }
 
         }
 

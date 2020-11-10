@@ -13,13 +13,24 @@ namespace kitsunevet.Controllers
     {
 
         [HttpPost]
-        public BackEnd.Controllers.Response.CadastroPetResponse SalvarPet (BackEnd.Controllers.Request.CadastroPetRequest request)
+        public ActionResult <BackEnd.Controllers.Response.CadastroPetResponse> SalvarPet (BackEnd.Controllers.Request.CadastroPetRequest request)
         {
-            Business.CadastroPetBusiness business = new Business.CadastroPetBusiness();
+            try
+            {
+                Business.CadastroPetBusiness business = new Business.CadastroPetBusiness();
 
-            BackEnd.Controllers.Response.CadastroPetResponse response = business.CadastrarPet(request);
+                BackEnd.Controllers.Response.CadastroPetResponse response = business.CadastrarPet(request);
 
-            return response;
+                return response;
+            }
+            catch (System.Exception ex)
+            {
+                return new BadRequestObjectResult(
+                    new BackEnd.Controllers.Response.ErroResponse(ex, 400)
+                );
+            }
+            
+            
                      
         }
 

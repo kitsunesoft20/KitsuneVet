@@ -14,16 +14,27 @@ namespace kitsunevet.Controllers
         [Route("[controller]")]
         public class agendamentohospedagemController : ControllerBase
         {
-            Models.veterinarioContext ctx = new Models.veterinarioContext();
+        Models.veterinarioContext ctx = new Models.veterinarioContext();
 
         [HttpPost]
-        public BackEnd.Controllers.Response.HotelResponse AgendarHotel ( BackEnd.Controllers.Request.HotelRequest request){
+        public ActionResult<BackEnd.Controllers.Response.HotelResponse> AgendarHotel ( BackEnd.Controllers.Request.HotelRequest request){
 
-            Business.AgendamentoHotelBusiness business = new Business.AgendamentoHotelBusiness();
+            try
+            {
+                Business.AgendamentoHotelBusiness business = new Business.AgendamentoHotelBusiness();
 
-            BackEnd.Controllers.Response.HotelResponse response = business.AgendarHospedagem(request);
+                BackEnd.Controllers.Response.HotelResponse response = business.AgendarHospedagem(request);
 
-            return response;
+                return response;
+            }
+            catch (System.Exception ex)
+            {
+                return new BadRequestObjectResult(
+                    new BackEnd.Controllers.Response.ErroResponse(ex, 400)
+                );
+            }
+
+            
 
         }
             
