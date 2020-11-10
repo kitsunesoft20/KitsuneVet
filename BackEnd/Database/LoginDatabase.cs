@@ -14,15 +14,15 @@ namespace kitsunevet.Database
 
             Models.veterinarioContext ctx = new Models.veterinarioContext();
 
-            List<Models.TbCliente> Login = ctx.TbCliente.Include(x => x.IdLoginNavigation)
+            Models.TbCliente Login = ctx.TbCliente.Include(x => x.IdLoginNavigation)
                 .FirstOrDefault(x => x.IdLoginNavigation.DsEmail == Request.email && x.IdLoginNavigation.DsSenha == Request.senha);
 
             BackEnd.Controllers.Response.LoginResponse response = new BackEnd.Controllers.Response.LoginResponse();
 
-            response.IdCliente = Login.IdLoginNavigation.idCliente;
-            response.IdLogin = Login.idLogin;
-            response.email = Login.dsEmail;
-            response.NomeCliente = Login.nmCliente;
+            response.IdCliente = Login.IdCliente;
+            response.IdLogin = Login.IdLogin;
+            response.email = Login.DsEmail;
+            response.NomeCliente = Login.NmCliente;
 
             return response;
 

@@ -10,7 +10,7 @@ namespace kitsunevet.Controllers
 
     [ApiController]
     [Route("[controller]")]
-    public class VacinacaoController : ControllerBase
+    public class agendamentovacinaController : ControllerBase
     {
         Models.veterinarioContext ctx = new Models.veterinarioContext();
 

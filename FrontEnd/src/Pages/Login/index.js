@@ -21,8 +21,6 @@ export default function Login()  {
 
     const loadingBar = useRef(null);
 
-    const cookie = document.cookie;
-
     const logarClick = async () => {
 
         try {
@@ -33,28 +31,28 @@ export default function Login()  {
                 email: Email,
                 senha: Senha
             };
+
             const resp = await api.FazerLogin(request);
 
             toast.success("Logado!");
 
             loadingBar.current.complete();
 
-            history.push({
-                pathname:("/"),
-                state:{
-                    logado: true,
-                    IdCliente: resp.IdCliente
-                }
-            })
-
         }
 
         catch (e) {
-            if(e.response.data.erro)
-                toast.error(e.response.data.erro);
+            if(e.response.data.erro){
+                toast.error("Erro, verifique suas credenciais e tente novamente");
+
+                loadingBar.current.complete();
+            }
+
             else
                 toast.error('Houve um erro! Tente novamente.');
+
+                loadingBar.current.complete();
         }
+
 
     }
 
@@ -78,21 +76,21 @@ export default function Login()  {
                         {"{"} Login {"}"}
                     </div>
 
-                    <div className="subboxlogin">
-                        <h2> E-mail: </h2>
-                        <input type="text" className="email" 
-                            value={Email}
-                            onChange ={x => setEmail(x.target.value)}
-                        />
-                    </div>
+                        <div className="subboxlogin">
+                            <h2> E-mail: </h2>
+                            <input type="text" className="email" 
+                                value={Email}
+                                onChange ={x => setEmail(x.target.value)}
+                            />
+                        </div>
 
-                    <div className="subboxlogin">
-                        <h2> Senha: </h2>
-                        <input type="password" className="senha"
-                            value={Senha}
-                            onChange ={x => setSenha(x.target.value)}
-                        />
-                    </div>
+                        <div className="subboxlogin">
+                            <h2> Senha: </h2>
+                            <input type="password" className="senha"
+                                value={Senha}
+                                onChange ={x => setSenha(x.target.value)}
+                            />
+                        </div>
 
                     <button className="botaoLogin" onClick={logarClick} > Confirmar </button>
 

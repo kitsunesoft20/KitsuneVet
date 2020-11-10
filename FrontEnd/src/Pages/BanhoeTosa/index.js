@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React, { useRef, useState } from 'react'
 
 import './banhoetosa.css'
 import Cabecalho from '../../Components/Cabecalho';
@@ -8,7 +8,25 @@ import Rodape from '../../Components/Rodape';
 import imagem1 from './imagens/semfundo02.png';
 import imagem2 from './imagens/semfundo03.png';
 
+import LoadingBar from 'react-top-loading-bar';
+import KitsuneVetApi from '../../services/KitsuneVetApi';
+
+const api = new KitsuneVetApi();
+
 export default function BanhoeTosa()  {
+
+    /*
+    const [Banho, setBanho] = useState('');
+    const [Tosa, setTosa] = useState('');
+    const [Unhas, setUnhas] = useState('');
+    const [Dentes, setDentes] = useState('');
+    const [Observacoes, setObservacoes] = useState('');
+    const [Horario, setHorario] = useState('');
+    const [Data, setData] = useState('');
+    const [Pet, setPet] = useState('');
+    const [IdCliente, IdCliente] = useState(''); 
+    */
+
     return (
 
         <div className="inicioBeT">
