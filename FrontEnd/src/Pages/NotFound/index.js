@@ -12,7 +12,7 @@ export default function NotFound()  {
         <div className="divnf">
             <div className="boxnotfound">
                 {'{'} 404 NotFound {'}'}
-                <p> Ops! Página não encontrada <span> &#128546 </span>; </p>
+                <p> Ops! Página não encontrada <span>&#128547;</span> </p>
                 <img src={birdgif} width="300px" height="300px" alt=""/>
             </div>
         </div>

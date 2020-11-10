@@ -12,6 +12,9 @@ import LoadingBar from 'react-top-loading-bar';
 import KitsuneVetApi from '../../services/KitsuneVetApi';
 import { useHistory } from "react-router-dom";
 
+import imagem1 from './imagens/doguinho.png'
+import imagem2 from './imagens/gatinnn.png'
+
 const api = new KitsuneVetApi();
 
 export default function Vacina()  {
@@ -41,7 +44,7 @@ export default function Vacina()  {
                 IdCliente: IdCliente,
                 IdPet: IdPet,
                 Observacoes: Observacoes,
-                IdCliente: ,
+                IdCliente: IdCliente,
                 IdPet: IdPet
             };
 
@@ -79,7 +82,7 @@ export default function Vacina()  {
                 <div class="fera">
 
                     <div class="container4">
-                        <img src="../Vacinação/imagens/semfundocachorrin.png" width="250px" height="250px" />
+                        <img src={imagem1} width="250px" height="250px" alt="erro" />
                     </div>
 
                     <div class="container3">
@@ -162,7 +165,7 @@ export default function Vacina()  {
                     </div> 
                     
                     <div class="container5">
-                        <img src="../Vacinação/imagens/gatinnn.png" width="300px" height="300px" />
+                        <img src={imagem2} width="300px" height="300px" alt="erro" />
                     </div>
 
                 </div>

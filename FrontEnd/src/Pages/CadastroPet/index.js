@@ -6,6 +6,9 @@ import './cadastrarpet.css';
 import Cabecalho from '../../Components/Cabecalho';
 import Rodape from '../../Components/Rodape';
 
+import imagem1 from './imagens/puggif.gif';
+import imagem2 from './imagens/pet.png';
+
 export default function CadastroPet()  {
     return (
     <div class="inicioCPet">
@@ -15,7 +18,7 @@ export default function CadastroPet()  {
         <div class="boxCPet">
 
             <div class="subboxCPet">
-                <img src="../CadastrarPet/imagens/celular.png" width="300px" height="300px" alt="erro"/>
+                <img src={imagem1} width="300px" height="300px" alt="erro"/>
             </div>
 
             <div class="subboxCPet2">
@@ -702,7 +705,7 @@ export default function CadastroPet()  {
             </div> 
             
             <div class="subboxCPet3">
-                <img src="../CadastrarPet/imagens/pet.png" width="300px" height="300px" alt="erro"/>
+                <img src={imagem2} width="300px" height="300px" alt="erro"/>
             </div>
 
         </div>

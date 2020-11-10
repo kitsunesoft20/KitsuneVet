@@ -6,6 +6,9 @@ import './CirurgiaPet.css'
 import Cabecalho from '../../Components/Cabecalho'
 import Rodape from '../../Components/Rodape'
 
+import imagem1 from './imagens/cirurgia01.png';
+import imagem2 from './imagens/gatinho.png';
+
 export default function Cirurgia()  {
     return (
         <body>
@@ -17,7 +20,7 @@ export default function Cirurgia()  {
                 <div class="fera">
 
                     <div class="container4">
-                        <img src="../CirurgiaPet/imagens/cirurgia01.png" width="300px" height="300px" />
+                        <img src={imagem1} width="300px" height="300px" alt="erro"/>
                     </div>
 
                     <div class="container3">
@@ -34,6 +37,7 @@ export default function Cirurgia()  {
                                 <h4> Observações: </h4>
                                 <h4> Data da Cirurgia:</h4>
                                 <h4> Horario: </h4>
+                                <h4>Local: </h4>
                                 <h4> Pet: </h4>
 
                             </div>
@@ -66,8 +70,12 @@ export default function Cirurgia()  {
                                 <input type="date" id="fdate" name="fdate" />
 
                                 <input type="time" id="time" name="time" />
-                                
-                                
+
+                                <select name="local">
+                                    <option value="" disabled selected> </option>
+                                    <option value="KitsuneVet Santo Amaro"> KitsuneVet Santo Amaro </option>
+                                    <option value="KitsuneVet Jardim São Bernardo"> KitsuneVet Jardim São Bernardo </option>
+                                </select>
 
                                 <select name="tipodepet" id="tipodepet" placeholder="tipodepet">
                                     <option value="" disabled selected> </option>
@@ -86,7 +94,7 @@ export default function Cirurgia()  {
                     </div> 
                     
                     <div class="container5">
-                        <img src="../CirurgiaPet/imagens/gatinho.png" width="300px" height="300px" />
+                        <img src={imagem2} width="300px" height="300px" alt="erro"/>
                     </div>
 
                 </div>

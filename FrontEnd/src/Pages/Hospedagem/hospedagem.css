@@ -3,14 +3,23 @@
     box-sizing: border-box;
 }
 
+@font-face{
+    font-family: chicken;
+    src: url(./fontes/ChickenQuiche.otf);
+}
+
 .corp{
-    background-color:#f5554a;
+    background-image: linear-gradient(315deg, #63a4ff 0%, #83eaf1 74%);
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100vw;
     height: 100vh;
     justify-content: center;
+}
+
+.til{
+    font-family: chicken;
+    font-size: 55px;
 }
 
 .mini{
@@ -26,7 +35,26 @@
     border-radius: 20px;
 }
 
+.formcheck{
+    width: 50vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center ;
+    justify-content: space-between;
+}
 
+.loc{
+    width: 25vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center ;
+    justify-content: space-between;
+}
+
+.form-check-input{
+    height: 20px;
+    width: 20px;
+}
 
 .cai{
 width: 60vw;

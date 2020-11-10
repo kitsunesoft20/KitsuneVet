@@ -13,9 +13,8 @@ import KitsuneVetApi from '../../services/KitsuneVetApi';
 
 const api = new KitsuneVetApi();
 
-export default function BanhoeTosa()  {
-
-    /*
+export default function BanhoeTosa(props)  {
+    
     const [Banho, setBanho] = useState('');
     const [Tosa, setTosa] = useState('');
     const [Unhas, setUnhas] = useState('');
@@ -24,8 +23,7 @@ export default function BanhoeTosa()  {
     const [Horario, setHorario] = useState('');
     const [Data, setData] = useState('');
     const [Pet, setPet] = useState('');
-    const [IdCliente, IdCliente] = useState(''); 
-    */
+    const [IdCliente, setIdCliente] = useState('');
 
     return (
 
@@ -55,7 +53,8 @@ export default function BanhoeTosa()  {
                             <h4> Observação: </h4>
                             <h4> Horario: </h4>
                             <h4> Data de Atendimento: </h4>
-                           <h4> Pet: </h4>
+                            <h4> Local: </h4>
+                            <h4> Pet: </h4>
                         </div>
     
                         <form className="formulariosBeT">
@@ -73,6 +72,13 @@ export default function BanhoeTosa()  {
                             <input type="time" min="08:00" max="18:00" />
                             
                             <input type="date" />
+
+                            <select name="local">
+                                <option value="" disabled selected> </option>
+                                <option value="KitsuneVet Santo Amaro"> KitsuneVet Santo Amaro </option>
+                                <option value="KitsuneVet Jardim São Bernardo"> KitsuneVet Jardim São Bernardo </option>
+
+                            </select>
     
                             <select name="tipodepet" placeholder="tipodepet">
                                 <option value="" disabled selected> Selecione uma opção </option>

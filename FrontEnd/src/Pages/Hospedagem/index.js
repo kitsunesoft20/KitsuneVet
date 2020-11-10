@@ -17,7 +17,7 @@ export default function Hospedagem()  {
                     <div class="mini">
 
                         <div class="til">
-                        <h1>Hospedagem</h1>
+                        {'{'} Hospedagem {'}'}
                         </div>
 
                         <div class= "ensa">
@@ -52,17 +52,17 @@ export default function Hospedagem()  {
 
                         </div>
 
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" />
-                            <label class="form-check-label" for="defaultCheck1">
-                                Entregue em casa? (Será levado ao endereço associado a esta conta)
-                            </label>
+                        <div class="formcheck">
+                            <input class="form-check-input" type="checkbox" id="defaultCheck1" />
+                            Entregue em casa? (Será levado ao endereço associado a esta conta)
                         </div>
 
                         <div class= "loc">
+                            Local:
                             <select name="Local" placeholder="Local">
-                                <option value="Local"> Local</option>
-                                <option value="Local"> endereço</option>
+                                <option value="" disabled selected> </option>
+                                <option value="KitsuneVet Santo Amaro"> KitsuneVet Santo Amaro </option>
+                                <option value="KitsuneVet Jardim São Bernardo"> KitsuneVet Jardim São Bernardo </option>
                             </select>
                         </div>
 

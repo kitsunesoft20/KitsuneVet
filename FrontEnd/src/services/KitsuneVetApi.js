@@ -23,4 +23,9 @@ export default class KitsuneVetApi {
         return resp;
     }
 
+    async AgendarBanhoTosa(req){
+        const resp = await api.post('/agendamentobanhoetosa', req);
+        return resp;
+    }
+
 }

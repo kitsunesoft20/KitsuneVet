@@ -35,6 +35,10 @@ export default function Login()  {
             const resp = await api.FazerLogin(request);
             toast.success("Logado!");
             loadingBar.current.complete();
+
+            const state = { resp };
+
+            history.pushState(state, '' , '/agendamentobanhoetosa');
             
         }
 
