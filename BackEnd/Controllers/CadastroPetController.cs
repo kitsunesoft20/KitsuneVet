@@ -15,12 +15,12 @@ namespace kitsunevet.Controllers
         [HttpPost]
         public BackEnd.Controllers.Response.CadastroPetResponse SalvarPet (BackEnd.Controllers.Request.CadastroPetRequest request)
         {
+            Business.CadastroPetBusiness business = new Business.CadastroPetBusiness();
 
-            Database.CadastroPetDatabase database = new Database.CadastroPetDatabase();
+            BackEnd.Controllers.Response.CadastroPetResponse response = business.CadastrarPet(request);
 
-            BackEnd.Controllers.Response.CadastroPetResponse response = database.cadastrarPet(request);
-
-            return response;            
+            return response;
+                     
         }
 
     }
