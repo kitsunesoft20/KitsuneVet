@@ -1,21 +1,17 @@
 
 using System;
 
-namespace BackEnd.Controllers.Request
+namespace BackEnd.Controllers.Response
 {
-    public class BanhoTosaRequest
+    public class ExamesResponse
     {
+        public int IdExames { get; set; }
+
         public int? IdCliente { get; set; }
 
         public int? IdPet { get; set; }
 
-        public bool? Banho { get; set; }
-
-        public bool? Tosa { get; set; }
-
-        public bool? Unhas { get; set; }
-
-        public bool? Dentes { get; set; }
+        public string Exame { get; set; }
 
         public DateTime Data { get; set; }
 
