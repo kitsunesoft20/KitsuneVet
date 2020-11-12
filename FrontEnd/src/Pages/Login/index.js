@@ -17,7 +17,7 @@ export default function Login()  {
     const [Email,setEmail] = useState('');
     const [Senha,setSenha] = useState('');
 
-    let history = useHistory();
+    const history = useHistory();
 
     const loadingBar = useRef(null);
 
@@ -33,12 +33,20 @@ export default function Login()  {
             };
 
             const resp = await api.FazerLogin(request);
-            toast.success("Logado!");
-            loadingBar.current.complete();
 
-            const state = { resp };
-
-            history.pushState(state, '' , '/agendamentobanhoetosa');
+            await loadingBar.current.complete();
+            window.setTimeout(() => 
+                history.push({
+                    pathname: '/',
+                    state: {
+                        email: resp.data.email,
+                        idCliente: resp.data.idCliente,
+                        idLogin: resp.data.idLogin,
+                        nomeCliente: resp.data.nomeCliente,
+                        logado: true
+                    }
+                }), 5000
+            );
             
         }
 

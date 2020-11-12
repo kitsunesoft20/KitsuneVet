@@ -2,20 +2,20 @@
 import React from 'react';
 import './cabecalho.css';
 import logo from './Kitsunelogo.png';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useState } from 'react';
 
-export default function Cabecalho() {
-    
-    const [logado, setLogado] = useState(false)
+export default function Cabecalho(props) {
 
+    const info = props.infoLogin;
+    
     return(
 
         <div className="menu">
             <div className="submenu">
                 <Link to="/"> <img src={logo} width="35%" height="35%" alt="NotFound"/> </Link>
                 
-                {logado === false && (
+                { typeof(info.logou) == "undefined"  && (
 
                     <div className="itensmenu">
 
@@ -33,7 +33,7 @@ export default function Cabecalho() {
                     </div>
                 )}
 
-                {logado === true && (
+                { info.logou === true && (
 
                     <div className="itensmenu">
 

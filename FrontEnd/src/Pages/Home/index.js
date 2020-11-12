@@ -1,9 +1,10 @@
 
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useState } from 'react';
 
 import './home.css';
 import Cabecalho from '../../Components/Cabecalho';
@@ -15,11 +16,12 @@ import vacina from './imagens/vacina.png';
 import banhotosa from './imagens/banhotosa.png';
 import hospedagem from './imagens/hospedagem.png';
 
-export default function Home()  {
+export default function Home(props)  {
+
     return (
     <body>
 
-        <Cabecalho />
+        <Cabecalho infoLogin={props} />
 
         <div className="iniciohome">
 
