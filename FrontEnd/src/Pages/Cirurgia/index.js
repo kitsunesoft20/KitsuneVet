@@ -9,20 +9,19 @@ import Rodape from '../../Components/Rodape'
 import imagem1 from './imagens/cirurgia01.png';
 import imagem2 from './imagens/gatinho.png';
 
-export default function Cirurgia()  {
-    const[TipoCirurgia,set]=useState('')
-    const[Observacoes,set]=useState('')
-    const[DtCirurgia,set]=useState('')
-    const[Horario,set]=useState('')
-    const[local,set]=useState('')
-    const[Pet,set]=useState('')
+export default function Cirurgia(props)  {
 
-
+    const[TipoCirurgia,setTipoCirurgia]=useState('');
+    const[Observacoes,setObservacoes]=useState('');
+    const[DtCirurgia,setDtCirurgia]=useState('');
+    const[Horario,setHorario]=useState('');
+    const[local,setlocal]=useState('');
+    const[Pet,setPet]=useState('');
 
     return (
         <body>
             
-            <Cabecalho />
+            <Cabecalho infoLogin={props}/>
 
             <div class="inicio">
 

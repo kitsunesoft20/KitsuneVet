@@ -19,7 +19,7 @@ import hospedagem from './imagens/hospedagem.png';
 export default function Home(props)  {
 
     return (
-    <body>
+    <div>
 
         <Cabecalho infoLogin={props} />
 
@@ -35,31 +35,91 @@ export default function Home(props)  {
                     <div className="subboxH"> 
                         <img src={hospedagem} width="120px" height="120px" alt="NotFound"/>
                         <div className="miniboxH"> <h3>Hospedagem</h3> </div>
-                        <div className="A"> <Link to="/agendamentohospedagem"> <button type="button">Agendar</button> </Link> </div>
+                        <div className="A"> 
+                            <Link to={{
+                                    pathname: "/agendamentobanhoetosa",
+                                    state: {
+                                        email: props.location.email,
+                                        idCliente: props.location.idCliente,
+                                        nomeCliente: props.location.nomeCliente,
+                                        logado: props.location.logado
+                                    } 
+                                }}> 
+                                    <button type="button">Agendar</button> 
+                            </Link> 
+                        </div>
                     </div>
 
                     <div className="subboxH"> 
                         <img src={vacina} width="120px" height="120px" alt="NotFound"/>
                         <div className="miniboxH"> <h3>Vacinas</h3> </div>
-                        <div className="A"> <Link to="/agendamentovacina"> <button type="button">Agendar</button> </Link> </div>
+                        <div className="A"> 
+                            <Link to={{
+                                    pathname: "/agendamentobanhoetosa",
+                                    state: {
+                                        email: props.location.email,
+                                        idCliente: props.location.idCliente,
+                                        nomeCliente: props.location.nomeCliente,
+                                        logado: props.location.logado
+                                    } 
+                                }}> 
+                                    <button type="button">Agendar</button> 
+                            </Link> 
+                        </div>
                     </div>
 
                     <div className="subboxH"> 
                         <img src={cirurgia} width="120px" height="120px" alt="NotFound"/>
                         <div className="miniboxH"> <h3>Cirurgia</h3> </div>
-                        <div className="A"> <Link to="/agendamentocirurgia" > <button type="button">Agendar</button> </Link> </div>
+                        <div className="A"> 
+                            <Link to={{
+                                    pathname: "/agendamentobanhoetosa",
+                                    state: {
+                                        email: props.location.email,
+                                        idCliente: props.location.idCliente,
+                                        nomeCliente: props.location.nomeCliente,
+                                        logado: props.location.logado
+                                    } 
+                                }}> 
+                                    <button type="button">Agendar</button> 
+                            </Link> 
+                        </div>
                     </div>
 
                     <div className="subboxH">
                         <img src={exames} width="120px" height="120px" alt="NotFound"/>
                         <div className="miniboxH"> <h3>Exames</h3> </div>
-                        <div className="A"> <Link to="/agendamentoexame" > <button type="button">Agendar</button> </Link> </div>
+                        <div className="A"> 
+                            <Link to={{
+                                    pathname: "/agendamentobanhoetosa",
+                                    state: {
+                                        email: props.location.email,
+                                        idCliente: props.location.idCliente,
+                                        nomeCliente: props.location.nomeCliente,
+                                        logado: props.location.logado
+                                    } 
+                                }}> 
+                                    <button type="button">Agendar</button> 
+                            </Link> 
+                        </div>
                     </div>
 
                     <div className="subboxH">
                         <img src={banhotosa} width="120px" height="120px" alt="NotFound"/>
                         <div className="miniboxH"> <h3>Banho e Tosa</h3></div>
-                        <div className="A"> <Link to="/agendamentobanhoetosa" > <button type="button">Agendar</button> </Link> </div>
+                        <div className="A"> 
+                            <Link to={{
+                                pathname: "/agendamentobanhoetosa",
+                                state: {
+                                    email: props.location.email,
+                                    idCliente: props.location.idCliente,
+                                    nomeCliente: props.location.nomeCliente,
+                                    logado: props.location.logado
+                                } 
+                            }}> 
+                                    <button type="button">Agendar</button> 
+                            </Link> 
+                        </div>
                     </div>
 
                 </div>
@@ -72,7 +132,7 @@ export default function Home(props)  {
 
         <ToastContainer />
 
-    </body>
+    </div>
 
     );
 

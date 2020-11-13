@@ -1,24 +1,22 @@
 
-import React from 'react'
+import React, { useState } from 'react'
 
 import './hospedagem.css';
 import Cabecalho from '../../Components/Cabecalho';
 import Rodape from '../../Components/Rodape';
 
-export default function Hospedagem()  {
-    const[Pet,set]=useState('')
-    const[Nome,set]=useState('')
-    const[DtEntrada,set]=useState('')
-    const[HorarioEntrada,set]=useState('')
-    const[DtSaida,set]=useState('')
-    const[HorarioSaida,set]=useState('')
+export default function Hospedagem(props)  {
 
-
+    const[Pet,setPet]=useState('')
+    const[DtEntrada,setDtEntrada]=useState('')
+    const[HorarioEntrada,setHorarioEntrada]=useState('')
+    const[DtSaida,setDtSaida]=useState('')
+    const[HorarioSaida,setHorarioSaida]=useState('')
 
     return (
         <body>
     
-            <Cabecalho />
+            <Cabecalho infoLogin={props}/>
 
             <form class="form">
                 <div class = "corp">

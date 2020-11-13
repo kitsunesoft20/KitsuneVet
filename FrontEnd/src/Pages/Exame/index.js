@@ -1,27 +1,25 @@
 
-import React from 'react'
+import React, { useState } from 'react'
 
 import './exame.css';
 
 import Cabecalho from '../../Components/Cabecalho'
 import Rodape from '../../Components/Rodape'
 
-export default function Exame()  {
-    const[Exames,set]=useState('')
-    const[Pet,set]=useState('')
-    const[Nome,set]=useState('')
-    const[TpExame,set]=useState('')
-    const[Oftal,set]=useState('')
-    const[DtAtendimento,set]=useState('')
-    const[Horario,set]=useState('')
-    const[local,set]=useState('')
-    const[Endereco,set]=useState('')
+export default function Exame(props)  {
 
+    const[Exame,setExame]= useState('')
+    const[Pet,setPet]= useState('')
+    const[TpExame,setTpExame]= useState('')
+    const[DtAtendimento,setDtAtendimento]= useState('')
+    const[Horario,setHorario]= useState('')
+    const[local,setlocal]= useState('')
+    const[Endereco,setEndereco]= useState('')
 
     return (
         <body>
 
-            <Cabecalho />
+            <Cabecalho infoLogin={props}/>
 
             <form >
                 <div class="tudo">

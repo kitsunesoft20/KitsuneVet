@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 
 import './cadastrarpet.css';
 
@@ -9,22 +9,21 @@ import Rodape from '../../Components/Rodape';
 import imagem1 from './imagens/puggif.gif';
 import imagem2 from './imagens/pet.png';
 
-export default function CadastroPet()  {
-    const[Nome,set]=useState('')
-    const[Peso,set]=useState('')
-    const[DtNasci,set]=useState('')
-    const[Tipo,set]=useState('')
-    const[Porte,set]=useState('')
-    const[RacaGato,set]=useState('')
-    const[RacaCachorro,set]=useState('')
-    const[Sexo,set]=useState('')
-    const[Medicamentos,set]=useState('')
+export default function CadastroPet(props)  {
 
+    const[Nome,setNome]=useState('');
+    const[Peso,setPeso]=useState('');
+    const[DtNasc,setDtNasc]=useState('');
+    const[Tipo,setTipo]=useState('');
+    const[Porte,setPorte]=useState('');
+    const[Raca,setRaca]=useState('');
+    const[Sexo,setSexo]=useState('');
+    const[Medicamentos,setMedicamentos]=useState('');
 
     return (
     <div class="inicioCPet">
 
-        <Cabecalho/>
+        <Cabecalho infoLogin={props}/>
 
         <div class="boxCPet">
 

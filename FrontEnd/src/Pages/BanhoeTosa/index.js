@@ -29,7 +29,7 @@ export default function BanhoeTosa(props)  {
 
         <div className="inicioBeT">
 
-            <Cabecalho />
+            <Cabecalho infoLogin={props}/>
     
             <div className="containerBeT">
     

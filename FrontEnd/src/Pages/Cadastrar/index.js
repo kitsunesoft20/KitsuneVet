@@ -14,7 +14,7 @@ import familia from './imagens/familia.png';
 
 const api = new KitsuneVetApi();
 
-export default function Cadastrar()  {
+export default function Cadastrar(props)  {
 
     const [Nome, setNome] = useState('')
     const [Sexo, setSexo] = useState('')
@@ -61,7 +61,7 @@ export default function Cadastrar()  {
     return (
         <div>
 
-            <Cabecalho />
+            <Cabecalho infoLogin={props}/>
     
             <div className="inicio">
 
@@ -184,7 +184,17 @@ export default function Cadastrar()  {
     
             <Rodape />
 
-            <ToastContainer/>
+            <ToastContainer
+                position="top-right"
+                autoClose={2000}
+                hideProgressBar
+                newestOnTop={false}
+                closeOnClick={false}
+                rtl={false}
+                pauseOnFocusLoss
+                draggable={false}
+                pauseOnHover={false}
+            />
 
         </div>
     );

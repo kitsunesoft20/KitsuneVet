@@ -9,10 +9,10 @@ import Cabecalho from '../../Components/Cabecalho'
 import KitsuneVetApi from '../../services/KitsuneVetApi';
 
 import LoadingBar from 'react-top-loading-bar';
-import { Redirect } from "react-router-dom";
+import Axios from 'axios';
 const api = new KitsuneVetApi();
 
-export default function Login()  {
+export default function Login(props)  {
 
     const [Email,setEmail] = useState('');
     const [Senha,setSenha] = useState('');
@@ -34,6 +34,8 @@ export default function Login()  {
 
             const resp = await api.FazerLogin(request);
 
+            toast.info("Logado! 😺 ")
+
             await loadingBar.current.complete();
             window.setTimeout(() => 
                 history.push({
@@ -41,11 +43,10 @@ export default function Login()  {
                     state: {
                         email: resp.data.email,
                         idCliente: resp.data.idCliente,
-                        idLogin: resp.data.idLogin,
                         nomeCliente: resp.data.nomeCliente,
                         logado: true
                     }
-                }), 5000
+                }), 2000
             );
             
         }
@@ -74,7 +75,7 @@ export default function Login()  {
                 ref={loadingBar} 
             />
 
-            <Cabecalho />
+            <Cabecalho infoLogin={props}/>
 
             <div className="bodylogin">
                 
@@ -106,7 +107,17 @@ export default function Login()  {
                         
             </div>
 
-            <ToastContainer />
+            <ToastContainer
+                position="top-right"
+                autoClose={2000}
+                hideProgressBar
+                newestOnTop={false}
+                closeOnClick={false}
+                rtl={false}
+                pauseOnFocusLoss
+                draggable={false}
+                pauseOnHover={false}
+            />
 
         </div>
 

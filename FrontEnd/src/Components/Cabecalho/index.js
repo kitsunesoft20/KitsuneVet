@@ -7,7 +7,9 @@ import { useState } from 'react';
 
 export default function Cabecalho(props) {
 
-    const info = props.infoLogin;
+    const infoLogin = props.infoLogin;
+
+    console.log(infoLogin)
     
     return(
 
@@ -15,7 +17,7 @@ export default function Cabecalho(props) {
             <div className="submenu">
                 <Link to="/"> <img src={logo} width="35%" height="35%" alt="NotFound"/> </Link>
                 
-                { typeof(info.logou) == "undefined"  && (
+                { infoLogin.location.state == undefined  && (
 
                     <div className="itensmenu">
 
@@ -33,7 +35,7 @@ export default function Cabecalho(props) {
                     </div>
                 )}
 
-                { info.logou === true && (
+                { infoLogin.location.state !== undefined && (
 
                     <div className="itensmenu">
 
@@ -43,7 +45,7 @@ export default function Cabecalho(props) {
                         <Link to="/cadastroPet"> <h4>Cadastre seu Pet</h4> </Link>
                         <div className="sep"> </div>
                     
-                        <h4> Fulano </h4>
+                        <h4> {} </h4>
 
                     </div>
                 )}

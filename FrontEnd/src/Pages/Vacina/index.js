@@ -17,7 +17,7 @@ import imagem2 from './imagens/gatinnn.png'
 
 const api = new KitsuneVetApi();
 
-export default function Vacina()  {
+export default function Vacina(props)  {
 
     const [IdCliente, setIdCliente] = useState('');
     const [IdPet, setIdPet] = useState('');
@@ -75,7 +75,7 @@ export default function Vacina()  {
     return (
         <body>
             
-            <Cabecalho />
+            <Cabecalho infoLogin={props}/>
 
             <div class="inicio">
 
