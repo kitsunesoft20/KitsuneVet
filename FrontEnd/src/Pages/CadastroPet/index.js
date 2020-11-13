@@ -10,6 +10,17 @@ import imagem1 from './imagens/puggif.gif';
 import imagem2 from './imagens/pet.png';
 
 export default function CadastroPet()  {
+    const[Nome,set]=useState('')
+    const[Peso,set]=useState('')
+    const[DtNasci,set]=useState('')
+    const[Tipo,set]=useState('')
+    const[Porte,set]=useState('')
+    const[RacaGato,set]=useState('')
+    const[RacaCachorro,set]=useState('')
+    const[Sexo,set]=useState('')
+    const[Medicamentos,set]=useState('')
+
+
     return (
     <div class="inicioCPet">
 

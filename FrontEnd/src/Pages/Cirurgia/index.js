@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React, { useState } from 'react'
 
 import './CirurgiaPet.css'
 
@@ -10,6 +10,15 @@ import imagem1 from './imagens/cirurgia01.png';
 import imagem2 from './imagens/gatinho.png';
 
 export default function Cirurgia()  {
+    const[TipoCirurgia,set]=useState('')
+    const[Observacoes,set]=useState('')
+    const[DtCirurgia,set]=useState('')
+    const[Horario,set]=useState('')
+    const[local,set]=useState('')
+    const[Pet,set]=useState('')
+
+
+
     return (
         <body>
             

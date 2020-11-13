@@ -6,6 +6,15 @@ import Cabecalho from '../../Components/Cabecalho';
 import Rodape from '../../Components/Rodape';
 
 export default function Hospedagem()  {
+    const[Pet,set]=useState('')
+    const[Nome,set]=useState('')
+    const[DtEntrada,set]=useState('')
+    const[HorarioEntrada,set]=useState('')
+    const[DtSaida,set]=useState('')
+    const[HorarioSaida,set]=useState('')
+
+
+
     return (
         <body>
     

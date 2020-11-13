@@ -7,6 +7,17 @@ import Cabecalho from '../../Components/Cabecalho'
 import Rodape from '../../Components/Rodape'
 
 export default function Exame()  {
+    const[Exames,set]=useState('')
+    const[Pet,set]=useState('')
+    const[Nome,set]=useState('')
+    const[TpExame,set]=useState('')
+    const[Oftal,set]=useState('')
+    const[DtAtendimento,set]=useState('')
+    const[Horario,set]=useState('')
+    const[local,set]=useState('')
+    const[Endereco,set]=useState('')
+
+
     return (
         <body>
 
