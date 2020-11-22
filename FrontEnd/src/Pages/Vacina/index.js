@@ -1,5 +1,5 @@
 
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -18,6 +18,28 @@ import imagem2 from './imagens/gatinnn.png'
 const api = new KitsuneVetApi();
 
 export default function Vacina(props)  {
+
+    const [logado,setLogado] = useState(false);
+    const [emailP,setEmailP] = useState('');
+    const [idCliente,setidCliente] = useState('');
+    const [nomeCliente,setNomeCliente] = useState('');
+
+    useEffect(() => {
+        if(props.location.state !== undefined)
+        {
+            setLogado(true);
+            setEmailP(props.location.state.email);
+            setidCliente(props.location.state.idCliente);
+            setNomeCliente(props.location.state.nomeCliente);
+        }
+    });
+
+    const af = {
+        email: emailP,
+        idCliente: idCliente,
+        logado: logado,
+        nomeCliente: nomeCliente
+    };
 
     const [IdCliente, setIdCliente] = useState('');
     const [IdPet, setIdPet] = useState('');
@@ -75,7 +97,7 @@ export default function Vacina(props)  {
     return (
         <body>
             
-            <Cabecalho infoLogin={props}/>
+            <Cabecalho props={af}/>
 
             <div class="inicio">
 

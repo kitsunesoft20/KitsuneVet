@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import './exame.css';
 
@@ -7,6 +7,28 @@ import Cabecalho from '../../Components/Cabecalho'
 import Rodape from '../../Components/Rodape'
 
 export default function Exame(props)  {
+
+    const [logado,setLogado] = useState(false);
+    const [emailP,setEmailP] = useState('');
+    const [idCliente,setidCliente] = useState('');
+    const [nomeCliente,setNomeCliente] = useState('');
+
+    useEffect(() => {
+        if(props.location.state !== undefined)
+        {
+            setLogado(true);
+            setEmailP(props.location.state.email);
+            setidCliente(props.location.state.idCliente);
+            setNomeCliente(props.location.state.nomeCliente);
+        }
+    });
+
+    const af = {
+        email: emailP,
+        idCliente: idCliente,
+        logado: logado,
+        nomeCliente: nomeCliente
+    };
 
     const[Exame,setExame]= useState('')
     const[Pet,setPet]= useState('')
@@ -19,7 +41,7 @@ export default function Exame(props)  {
     return (
         <body>
 
-            <Cabecalho infoLogin={props}/>
+            <Cabecalho props={af}/>
 
             <form >
                 <div class="tudo">

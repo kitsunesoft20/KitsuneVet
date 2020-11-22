@@ -1,5 +1,5 @@
 
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useHistory } from "react-router-dom";
@@ -10,21 +10,24 @@ import KitsuneVetApi from '../../services/KitsuneVetApi';
 
 import LoadingBar from 'react-top-loading-bar';
 import Axios from 'axios';
+
+import Cookies from 'js-cookie';
+
 const api = new KitsuneVetApi();
 
-export default function Login(props)  {
+export default function Login()  {
 
     const [Email,setEmail] = useState('');
     const [Senha,setSenha] = useState('');
 
     const history = useHistory();
-
     const loadingBar = useRef(null);
+
+    const cookie = Cookies.getJSON('Login');
 
     const logarClick = async () => {
 
         try {
-
             loadingBar.current.continuousStart();
 
             const request = {
@@ -34,19 +37,20 @@ export default function Login(props)  {
 
             const resp = await api.FazerLogin(request);
 
+            console.log(resp);
+
+            Cookies.set( 'Login', {
+                email: resp.data.email,
+                idCliente: resp.data.idCliente,
+                nomeCliente: resp.data.nomeCliente,
+                logado: true
+            });
+
             toast.info("Logado! 😺 ")
 
             await loadingBar.current.complete();
             window.setTimeout(() => 
-                history.push({
-                    pathname: '/',
-                    state: {
-                        email: resp.data.email,
-                        idCliente: resp.data.idCliente,
-                        nomeCliente: resp.data.nomeCliente,
-                        logado: true
-                    }
-                }), 2000
+                history.push( '/' ), 1000
             );
             
         }
@@ -75,7 +79,7 @@ export default function Login(props)  {
                 ref={loadingBar} 
             />
 
-            <Cabecalho infoLogin={props}/>
+            <Cabecalho props={cookie}/>
 
             <div className="bodylogin">
                 

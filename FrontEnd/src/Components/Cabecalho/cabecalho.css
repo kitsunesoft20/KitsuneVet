@@ -33,6 +33,7 @@
 }
 
 .itensmenu a:hover{
+    text-decoration: underline;
     text-shadow: 5px 5px 5px black;
 }
 
@@ -41,4 +42,10 @@
     height: 26px;
     background-color: white;
     border-radius: 25px;
+}
+
+.perfilcab{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }

@@ -1,5 +1,5 @@
 
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import './banhoetosa.css'
 import Cabecalho from '../../Components/Cabecalho';
@@ -13,8 +13,8 @@ import KitsuneVetApi from '../../services/KitsuneVetApi';
 
 const api = new KitsuneVetApi();
 
-export default function BanhoeTosa(props)  {
-    
+export default function BanhoeTosa()  {
+
     const [Banho, setBanho] = useState('');
     const [Tosa, setTosa] = useState('');
     const [Unhas, setUnhas] = useState('');
@@ -29,7 +29,7 @@ export default function BanhoeTosa(props)  {
 
         <div className="inicioBeT">
 
-            <Cabecalho infoLogin={props}/>
+            <Cabecalho />
     
             <div className="containerBeT">
     

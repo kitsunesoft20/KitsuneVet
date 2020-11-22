@@ -18,6 +18,11 @@ export default class KitsuneVetApi {
         return resp;
     }
 
+    async CadastrarPet(cad){
+        const resp = await api.post('/cadastroPet', cad);
+        return resp;
+    }
+    
     async AgendarVacina(req){
         const resp = await api.post('/agendamentovacina', req);
         return resp;

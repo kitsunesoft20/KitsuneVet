@@ -1,7 +1,11 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import './cadastrarpet.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+import KitsuneVetApi from '../../services/KitsuneVetApi';
 
 import Cabecalho from '../../Components/Cabecalho';
 import Rodape from '../../Components/Rodape';
@@ -9,7 +13,35 @@ import Rodape from '../../Components/Rodape';
 import imagem1 from './imagens/puggif.gif';
 import imagem2 from './imagens/pet.png';
 
+import { useHistory } from "react-router-dom";
+
+const api = new KitsuneVetApi();
+
 export default function CadastroPet(props)  {
+
+    const [logado,setLogado] = useState(false);
+    const [emailP,setEmailP] = useState('');
+    const [idCliente,setidCliente] = useState('');
+    const [nomeCliente,setNomeCliente] = useState('');
+
+    useEffect(() => {
+        if(props.location.state !== undefined)
+        {
+            setLogado(true);
+            setEmailP(props.location.state.email);
+            setidCliente(props.location.state.idCliente);
+            setNomeCliente(props.location.state.nomeCliente);
+        }
+    });
+
+    const af = {
+        email: emailP,
+        idCliente: idCliente,
+        logado: logado,
+        nomeCliente: nomeCliente
+    };
+
+    const history = useHistory();
 
     const[Nome,setNome]=useState('');
     const[Peso,setPeso]=useState('');
@@ -20,10 +52,42 @@ export default function CadastroPet(props)  {
     const[Sexo,setSexo]=useState('');
     const[Medicamentos,setMedicamentos]=useState('');
 
+    const salvarClick = async () => {
+
+        try {
+            const request = {
+                IdCliente: props.location.state.idCliente,
+                TipoPet: Tipo,
+                nomepet: Nome,
+                Sexo: Sexo,
+                Raca: Raca,
+                Porte: Porte,
+                Medicamentos: Medicamentos,
+                Nascimento: DtNasc,
+                Peso: Peso
+            };
+            const resp = await api.CadastrarPet(request);
+
+            toast("Pet cadastrado com sucesso 😼");
+
+            window.setTimeout(() => 
+                history.push('/'), 1000
+            );
+        }
+
+        catch (e) {
+            if(e.response.data.erro)
+                toast.error(e.response.data.erro);
+            else
+                toast.error('Houve um erro! Tente novamente.');
+        }
+
+    }
+
     return (
     <div class="inicioCPet">
 
-        <Cabecalho infoLogin={props}/>
+        <Cabecalho props={af}/>
 
         <div class="boxCPet">
 
@@ -44,95 +108,132 @@ export default function CadastroPet(props)  {
                         <h4> Peso(Kg): </h4>
                         <h4> Data de Nascimento: </h4>
                         <h4> Tipo de Pet: </h4>
-                        <h4>Porte:</h4>
-                        <h4>Raça de Gatos</h4>
-                        <h4>Raça de Cachorros</h4>
-                        <h4>Sexo:</h4>
+                        <h4> Porte:</h4>
+                        { Tipo === "" && (<h4> Raça: </h4>)}
+                        { Tipo === "gato" && (<h4> Raça: </h4>)}
+                        { Tipo === "cachorro" && (<h4> Raça: </h4>)}
+                        <h4> Sexo: </h4>
                         <h4> Medicamentos: </h4>
                     </div>
 
                     <form class="formulariosCPet">
                         
-                        <input type="text" />
+                        <input type="text" 
+                        value={Nome} 
+                        onChange ={x => setNome(x.target.value)}
+                        />
                         
-                        <input type="text" />
+                        <input type="text" 
+                        value={Peso} 
+                        onChange ={x => setPeso(x.target.value)}
+                        />
                         
-                        <input type="date" />
+                        <input type="date" 
+                        value={DtNasc} 
+                        onChange ={x => setDtNasc(x.target.value)}
+                        />
 
-                        <select name="Tipo de Pet " id="Tipo de Pet" placeholder="Tipo de Pet">
-                        <option value="" disabled selected> </option>
-                        <option value="cachorro">Cachorro</option>
-                        <option value="gato"> Gato</option>
+                        <select name="Tipo de Pet"  
+                        value={Tipo}
+                        onChange ={x => setTipo(x.target.value)}>
+
+                            <option value="" disabled selected> </option>
+                            <option value="cachorro"> Cachorro </option>
+                            <option value="gato"> Gato </option>
+
                         </select>
 
+                        <select name="Porte" 
+                        value={Porte}
+                        onChange ={x => setPorte(x.target.value)}>
 
-                        <select name="Porte" id="Porte" placeholder="Porte">
                             <option value="" disabled selected> </option>
                             <option value="pequeno"> Pequeno</option>
                             <option value="médio"> Médio </option>
                             <option value="grande"> Grande </option>
+
                         </select>
 
-            
-                        <select class="racagatos">
-                            <option value=""></option>
-                            
-                                <option value="sem raça definida">SRD - Sem raça definida </option>
-                            
-                                <option value="abissinio">Abissínio </option>
-                            
-                                <option value="american shorthair">American Shorthair </option>
-                            
-                                <option value="american short hair">American Short hair </option>
-                            
-                                <option value="bengal">Bengal </option>
-                            
-                                <option value="brasileiro real">Brasileiro Real </option>
-                            
-                                <option value="british">British </option>
-                            
-                                <option value="burmilla">Burmilla </option>
-                            
-                                <option value="cornish rex">Cornish Rex </option>
-                            
-                                <option value="exótico">Exótico </option>
-                            
-                                <option value="gato srd pelo curto">Gato Srd Pelo Curto </option>
-                            
-                                <option value="himalaia">Himaláia </option>
-                            
-                                <option value="maine coon">Maine Coon </option>
-                            
-                                <option value="munchkin">Munchkin </option>
-                            
-                                <option value="oriental">Oriental </option>
-                            
-                                <option value="persa">Persa </option>
-                            
-                                <option value="pixie bob">Pixie Bob </option>
-                            
-                                <option value="ragdoll">Ragdoll </option>
-                            
-                                <option value="russian blue">Russian Blue </option>
-                            
-                                <option value="sagrado da birmânia">Sagrado Da Birmânia </option>
-                            
-                                <option value="savannah">Savannah </option>
-                            
-                                <option value="scottish fold">Scottish Fold </option>
-                            
-                                <option value="siamês">Siamês </option>
-                            
-                                <option value="siberiana">Siberiana </option>
-                            
-                                <option value="sphynx">Sphynx </option>
-                            
-                                <option value="york">York </option>
-                            
-                        </select>
+                        {Tipo === "" && (
+                            <select>
+                                <option disabled select> Selecione o Tipo do Pet</option>
+                            </select>
+                        )}
 
-                        <select class="racacachorro">
-                            <option value=""></option>
+                        { Tipo === "gato" && (
+
+                            <select class="racagatos"
+                                value={Raca}
+                                onChange ={x => setRaca(x.target.value)}
+                                >
+                                
+                                    <option value=""></option>
+                                
+                                    <option value="sem raça definida">SRD - Sem raça definida </option>
+                                
+                                    <option value="abissinio">Abissínio </option>
+                                
+                                    <option value="american shorthair">American Shorthair </option>
+                                
+                                    <option value="american short hair">American Short hair </option>
+                                
+                                    <option value="bengal">Bengal </option>
+                                
+                                    <option value="brasileiro real">Brasileiro Real </option>
+                                
+                                    <option value="british">British </option>
+                                
+                                    <option value="burmilla">Burmilla </option>
+                                
+                                    <option value="cornish rex">Cornish Rex </option>
+                                
+                                    <option value="exótico">Exótico </option>
+                                
+                                    <option value="gato srd pelo curto">Gato Srd Pelo Curto </option>
+                                
+                                    <option value="himalaia">Himaláia </option>
+                                
+                                    <option value="maine coon">Maine Coon </option>
+                                
+                                    <option value="munchkin">Munchkin </option>
+                                
+                                    <option value="oriental">Oriental </option>
+                                
+                                    <option value="persa">Persa </option>
+                                
+                                    <option value="pixie bob">Pixie Bob </option>
+                                
+                                    <option value="ragdoll">Ragdoll </option>
+                                
+                                    <option value="russian blue">Russian Blue </option>
+                                
+                                    <option value="sagrado da birmânia">Sagrado Da Birmânia </option>
+                                
+                                    <option value="savannah">Savannah </option>
+                                
+                                    <option value="scottish fold">Scottish Fold </option>
+                                
+                                    <option value="siamês">Siamês </option>
+                                
+                                    <option value="siberiana">Siberiana </option>
+                                
+                                    <option value="sphynx">Sphynx </option>
+                                
+                                    <option value="york">York </option>
+                                
+                                </select>
+                            
+                        )
+                        }
+
+                        { Tipo === "cachorro" && (
+
+                            <select class="racacachorro"
+                            value={Raca}
+                            onChange ={x => setRaca(x.target.value)}
+                            >
+
+                                <option value=""></option>
                             
                                 <option value="SRD - Sem raça definida">SRD - Sem raça definida </option>
                             
@@ -696,20 +797,30 @@ export default function CadastroPet(props)  {
                             
                         </select>
 
-                        <select name="Sexo" id="Sexo" placeholder="Sexo">
+                        )
+                        }
+
+                        <select name="Sexo" 
+                        value={Sexo}
+                        onChange ={x => setSexo(x.target.value)}
+                        >
                             <option value="" disabled selected> </option>
                             <option value="Fêmea"> Fêmea </option>
                             <option value="Macho"> Macho </option>
                         </select>
 
-                        <textarea placeholder="Usa algum tipo de medicamento? Quais?" className="medicamentosCeP"/>
+                        <textarea placeholder="Usa algum tipo de medicamento? Quais?" 
+                        className="medicamentosCeP"
+                        value={Medicamentos}
+                        onChange ={x => setMedicamentos(x.target.value)}
+                        />
 
                     </form>
 
                 </div>
 
                 <div class="botaoCPet">
-                    <button> Cadastrar </button>
+                    <button onClick={salvarClick}> Cadastrar </button>
                 </div>
 
             </div> 
@@ -721,6 +832,18 @@ export default function CadastroPet(props)  {
         </div>
 
         <Rodape/>
+
+        <ToastContainer
+                position="top-right"
+                autoClose={2000}
+                hideProgressBar
+                newestOnTop={false}
+                closeOnClick={false}
+                rtl={false}
+                pauseOnFocusLoss
+                draggable={false}
+                pauseOnHover={false}
+            />
     
     </div>
     

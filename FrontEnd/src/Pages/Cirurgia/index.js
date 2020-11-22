@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import './CirurgiaPet.css'
 
@@ -11,6 +11,28 @@ import imagem2 from './imagens/gatinho.png';
 
 export default function Cirurgia(props)  {
 
+    const [logado,setLogado] = useState(false);
+    const [emailP,setEmailP] = useState('');
+    const [idCliente,setidCliente] = useState('');
+    const [nomeCliente,setNomeCliente] = useState('');
+
+    useEffect(() => {
+        if(props.location.state !== undefined)
+        {
+            setLogado(true);
+            setEmailP(props.location.state.email);
+            setidCliente(props.location.state.idCliente);
+            setNomeCliente(props.location.state.nomeCliente);
+        }
+    });
+
+    const af = {
+        email: emailP,
+        idCliente: idCliente,
+        logado: logado,
+        nomeCliente: nomeCliente
+    };
+
     const[TipoCirurgia,setTipoCirurgia]=useState('');
     const[Observacoes,setObservacoes]=useState('');
     const[DtCirurgia,setDtCirurgia]=useState('');
@@ -21,7 +43,7 @@ export default function Cirurgia(props)  {
     return (
         <body>
             
-            <Cabecalho infoLogin={props}/>
+            <Cabecalho props={af}/>
 
             <div class="inicio">
 
