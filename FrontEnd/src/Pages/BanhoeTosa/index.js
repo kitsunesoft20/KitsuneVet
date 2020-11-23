@@ -5,8 +5,13 @@ import './banhoetosa.css'
 import Cabecalho from '../../Components/Cabecalho';
 import Rodape from '../../Components/Rodape';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import imagem1 from './imagens/semfundo02.png';
 import imagem2 from './imagens/semfundo03.png';
+
+import Cookies from 'js-cookie';
 
 import LoadingBar from 'react-top-loading-bar';
 import KitsuneVetApi from '../../services/KitsuneVetApi';
@@ -23,7 +28,35 @@ export default function BanhoeTosa()  {
     const [Horario, setHorario] = useState('');
     const [Data, setData] = useState('');
     const [Pet, setPet] = useState('');
-    const [IdCliente, setIdCliente] = useState('');
+    const [Local, setLocal] = useState('');
+
+    const cookie = Cookies.getJSON('Login');
+
+    const salvarClick = async () => {
+
+        try {
+            const request = {
+                IdCliente: cookie.IdCliente,
+                IdPet: "IdPet",
+                Banho: Banho,
+                Tosa: Tosa,
+                Unhas: Unhas,
+                Dentes: Dentes,
+                Data: Data,
+                Local: Local
+            };
+            const resp = await api.CadastrarCliente(request);
+            toast("Cadastrado com Sucesso 😼");
+        }
+
+        catch (e) {
+            if(e.response.data.erro)
+                toast.error(e.response.data.erro);
+            else
+                toast.error('Houve um erro! Tente novamente.');
+        }
+
+    }
 
     return (
 
@@ -59,31 +92,56 @@ export default function BanhoeTosa()  {
     
                         <form className="formulariosBeT">
                             
-                            <input type="checkbox" />
+                            <input type="checkbox"
+                                value={Banho}
+                                onChange ={x => setBanho(x.target.value)}
+                            />
                             
-                            <input type="checkbox" />
+                            <input type="checkbox"
+                                value={Tosa}
+                                onChange ={x => setTosa(x.target.value)}
+                            />
     
-                            <input type="checkbox" />
+                            <input type="checkbox" 
+                            value={Unhas}
+                            onChange ={x => setUnhas (x.target.value)}
+                            />
                             
-                            <input type="checkbox" />
+                            <input type="checkbox" 
+                            value={Dentes}
+                            onChange ={x => setDentes (x.target.value)}
+                            />
                            
-                            <input type="text" />
+                            <input type="text" 
+                            value={Observacoes}
+                            onChange ={x => setObservacoes (x.target.value)}
+                            />
                             
-                            <input type="time" min="08:00" max="18:00" />
+                            <input type="time" min="08:00" max="18:00" 
+                            value={Horario}
+                            onChange ={x => setHorario (x.target.value)}
+                            />
                             
-                            <input type="date" />
+                            <input type="date" 
+                            value={Data}
+                            onChange ={x => setData (x.target.value)}
+                            />
 
-                            <select name="local">
+                            <select name="local"
+                            value={Local}
+                            onChange ={x => setLocal (x.target.value)}
+                            >
                                 <option value="" disabled selected> </option>
                                 <option value="KitsuneVet Santo Amaro"> KitsuneVet Santo Amaro </option>
                                 <option value="KitsuneVet Jardim São Bernardo"> KitsuneVet Jardim São Bernardo </option>
-
                             </select>
     
-                            <select name="tipodepet" placeholder="tipodepet">
+                            <select
+                            value={Pet}
+                            onChange ={x => setPet (x.target.value)}
+                            >
                                 <option value="" disabled selected> Selecione uma opção </option>
-                                <option value="feminino"> Gato </option>
-                                <option value="masculino"> Cachorro </option>
+                                
                             </select>
     
                         </form>

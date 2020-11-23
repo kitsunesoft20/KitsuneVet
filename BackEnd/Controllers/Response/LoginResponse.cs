@@ -1,3 +1,6 @@
+
+using System.Collections.Generic;
+
 namespace BackEnd.Controllers.Response
 {
     public class LoginResponse
@@ -10,6 +13,8 @@ namespace BackEnd.Controllers.Response
         public string email { get; set; }
 
         public string NomeCliente { get; set; }
+
+        public List<kitsunevet.Models.TbPet> tbPet { get; set; }
 
     }
 }

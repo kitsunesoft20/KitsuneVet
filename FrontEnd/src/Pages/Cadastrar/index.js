@@ -16,28 +16,6 @@ const api = new KitsuneVetApi();
 
 export default function Cadastrar(props)  {
 
-    const [logado,setLogado] = useState(false);
-    const [emailP,setEmailP] = useState('');
-    const [idCliente,setidCliente] = useState('');
-    const [nomeCliente,setNomeCliente] = useState('');
-
-    useEffect(() => {
-        if(props.location.state !== undefined)
-        {
-            setLogado(true);
-            setEmailP(props.location.state.email);
-            setidCliente(props.location.state.idCliente);
-            setNomeCliente(props.location.state.nomeCliente);
-        }
-    });
-
-    const af = {
-        email: emailP,
-        idCliente: idCliente,
-        logado: logado,
-        nomeCliente: nomeCliente
-    };
-
     const [Nome, setNome] = useState('')
     const [Sexo, setSexo] = useState('')
     const [Nascimento, setNascimento] = useState('')
@@ -83,7 +61,7 @@ export default function Cadastrar(props)  {
     return (
         <div>
 
-            <Cabecalho props={af}/>
+            <Cabecalho />
     
             <div className="inicio">
 
