@@ -168,8 +168,17 @@ export default function Home()  {
 
         <Rodape />
 
-        <ToastContainer />
-
+        <ToastContainer
+            position="top-right"
+            autoClose={2000}
+            hideProgressBar
+            newestOnTop={false}
+            closeOnClick={false}
+            rtl={false}
+            pauseOnFocusLoss
+            draggable={false}
+            pauseOnHover={false}
+        />
     </div>
 
     );

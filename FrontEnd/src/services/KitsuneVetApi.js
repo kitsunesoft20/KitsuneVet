@@ -38,6 +38,14 @@ export default class KitsuneVetApi {
         return resp;
     }
 
-    
+    async AgendarHotel(req){
+        const resp = await api.post('/agendamentohospedagem', req);
+        return resp;
+    }
+
+    async AgendarVacina(req){
+        const resp = await api.post('/agendamentovacina', req);
+        return resp;
+    }
 
 }

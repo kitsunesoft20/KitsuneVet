@@ -138,7 +138,7 @@ export default function Exame()  {
                             value={local}
                             onChange ={x => setlocal (x.target.value)}
                             >
-                                <option value="" disabled selected> </option>
+                                <option value="" disabled selected> Selecione uma opção </option>
                                 <option value="KitsuneVet Santo Amaro"> KitsuneVet Santo Amaro </option>
                                 <option value="KitsuneVet Jardim São Bernardo"> KitsuneVet Jardim São Bernardo </option>
                             </select>
@@ -146,11 +146,14 @@ export default function Exame()  {
                         </div>
                 
                         <div class="seis">
-                            <input type="text" placeholder="Observações" />
+                            <input type="text" placeholder="Observações" 
+                            value={Observacoes}
+                            onChange ={x => setObservacoes (x.target.value)}
+                            />
                         </div>
                     
                         <div class="sete">
-                        <button className="bt" onClick={salvarClick}> Agendar </button>
+                            <button className="bt" onClick={salvarClick}> Agendar </button>
                         </div>
             
                     </div>

@@ -114,7 +114,7 @@ export default function Cadastrar()  {
                                 <h4> Complemento: </h4>
                                 <h4> Cep: </h4>
                                 <h4> Data de Nascimento: </h4>
-                                <h4> Sexo: </h4>
+                                <h4> Gênero: </h4>
                             </div>
 
                             <form className="formularios">

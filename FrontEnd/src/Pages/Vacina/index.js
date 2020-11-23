@@ -15,12 +15,13 @@ import { useHistory } from "react-router-dom";
 import imagem1 from './imagens/doguinho.png'
 import imagem2 from './imagens/gatinnn.png'
 
+import Cookies from 'js-cookie';
+
 const api = new KitsuneVetApi();
 
-export default function Vacina(props)  {
+export default function Vacina()  {
 
-    const [IdCliente, setIdCliente] = useState('');
-    const [IdPet, setIdPet] = useState('');
+    const [Pet, setPet] = useState('');
     const [Vacina, setVacinas] = useState('');
     const [Horario, setHorario] = useState('');
     const [Data, setData] = useState('');
@@ -31,51 +32,56 @@ export default function Vacina(props)  {
 
     const loadingBar = useRef(null);
 
-    const AgendarVacinaClick = async () => {
+    const salvarClick = async () => {
 
         try {
 
             loadingBar.current.continuousStart();
 
             const request = {
+                IdCliente: cookie.IdCliente,
+                IdPet: Pet,
                 Vacina : Vacina,
                 Data : Data,
                 Local: Local,
-                IdCliente: IdCliente,
-                IdPet: IdPet,
                 Observacoes: Observacoes,
-                IdCliente: IdCliente,
-                IdPet: IdPet
             };
 
             const resp = await api.AgendarVacina(request);
 
-            toast.success("Logado!");
+            toast("Agendado com Sucesso! 😼");
+            await loadingBar.current.complete();
 
-            loadingBar.current.complete();
+            window.setTimeout(() => 
+                history.push( '/' ), 2000
+            );
 
         }
 
         catch (e) {
             if(e.response.data.erro){
                 toast.error(e.response.data.erro);
-
-                loadingBar.current.complete();
+                await loadingBar.current.complete();
             }
-
-            else
+                
+            else{
                 toast.error('Houve um erro! Tente novamente.');
-
-                loadingBar.current.complete();
+                await loadingBar.current.complete();
+            }
         }
-
 
     }
 
     return (
         <body>
+
+            <LoadingBar
+                height={4}
+                color='#f11946'
+                ref={loadingBar} 
+            />
             
-            <Cabecalho props={af}/>
+            <Cabecalho />
 
             <div class="inicio">
 
@@ -106,10 +112,15 @@ export default function Vacina(props)  {
                                         
                             <form class="formularios">
                                 
-                                <select>
-                                    <option value="" disabled selected> </option>
-                                    <option>  </option>
-                                    <option>  </option>
+                                <select
+                                value={Pet}
+                                onChange ={x => setPet (x.target.value)}
+                                >
+                                    <option value="" disabled selected> Selecione uma opção </option>
+                                    {cookie.pets.map(item =>
+                                        <option value={item.idPet}>{item.nomePet}</option>
+                                    )}
+                                    
                                 </select>
                                 
                                 <select name="vacinasCachorro">
@@ -130,12 +141,12 @@ export default function Vacina(props)  {
                                     <option value="quádrupla felina"> Quádrupla dose unica(A partir do 1 ano de idade)</option>
                                 </select>
                                 
-                                <input type="time" id="time" name="time" 
+                                <input type="time"
                                     value = {Horario}
                                     onChange ={x => setHorario(x.target.value)}
                                 />
                                 
-                                <input type="date" id="fdate" name="fdate" 
+                                <input type="date"
                                     value = {Data}
                                     onChange ={x => setData(x.target.value)}                                
                                 />
@@ -144,7 +155,7 @@ export default function Vacina(props)  {
                                     value ={Local}
                                     onChange ={x => setLocal(x.target.value)}
                                 >
-                                    <option value="" disabled selected> </option>
+                                    <option value="" disabled selected> Selecione uma opção </option>
                                     <option value="KitsuneVet Santo Amaro"> KitsuneVet Santo Amaro </option>
                                     <option value="KitsuneVet Jardim São Bernardo"> KitsuneVet Jardim São Bernardo </option>
                                 </select>
@@ -159,7 +170,7 @@ export default function Vacina(props)  {
                         </div>
 
                         <div class="ana">
-                            <button onClick={AgendarVacinaClick} > Agendar </button>
+                            <button onClick={salvarClick} > Agendar </button>
                         </div>
 
                     </div> 
@@ -173,6 +184,18 @@ export default function Vacina(props)  {
             </div>
 
             <Rodape />
+
+            <ToastContainer
+                position="top-right"
+                autoClose={2000}
+                hideProgressBar
+                newestOnTop={false}
+                closeOnClick={false}
+                rtl={false}
+                pauseOnFocusLoss
+                draggable={false}
+                pauseOnHover={false}
+            />
             
         </body>
     );
