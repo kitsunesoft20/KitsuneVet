@@ -18,6 +18,7 @@ export default function Cabecalho() {
                 email: '',
                 idCliente: 0,
                 nomeCliente: '',
+                pets: [],
                 logado: false
             }
         );

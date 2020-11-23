@@ -17,31 +17,7 @@ import { useHistory } from "react-router-dom";
 
 const api = new KitsuneVetApi();
 
-export default function CadastroPet(props)  {
-
-    const [logado,setLogado] = useState(false);
-    const [emailP,setEmailP] = useState('');
-    const [idCliente,setidCliente] = useState('');
-    const [nomeCliente,setNomeCliente] = useState('');
-
-    useEffect(() => {
-        if(props.location.state !== undefined)
-        {
-            setLogado(true);
-            setEmailP(props.location.state.email);
-            setidCliente(props.location.state.idCliente);
-            setNomeCliente(props.location.state.nomeCliente);
-        }
-    });
-
-    const af = {
-        email: emailP,
-        idCliente: idCliente,
-        logado: logado,
-        nomeCliente: nomeCliente
-    };
-
-    const history = useHistory();
+export default function CadastroPet()  {
 
     const[Nome,setNome]=useState('');
     const[Peso,setPeso]=useState('');
@@ -52,11 +28,19 @@ export default function CadastroPet(props)  {
     const[Sexo,setSexo]=useState('');
     const[Medicamentos,setMedicamentos]=useState('');
 
+    const cookie = Cookies.getJSON('Login');
+
+    let history = useHistory();
+    const loadingBar = useRef(null);
+
     const salvarClick = async () => {
 
         try {
+
+            loadingBar.current.continuousStart();
+
             const request = {
-                IdCliente: props.location.state.idCliente,
+                IdCliente: cookie.IdCliente,
                 TipoPet: Tipo,
                 nomepet: Nome,
                 Sexo: Sexo,
@@ -66,20 +50,27 @@ export default function CadastroPet(props)  {
                 Nascimento: DtNasc,
                 Peso: Peso
             };
+
             const resp = await api.CadastrarPet(request);
 
             toast("Pet cadastrado com sucesso 😼");
+            await loadingBar.current.complete();
 
             window.setTimeout(() => 
-                history.push('/'), 1000
+                history.push('/'), 2000
             );
         }
 
         catch (e) {
-            if(e.response.data.erro)
+            if(e.response.data.erro){
                 toast.error(e.response.data.erro);
-            else
+                await loadingBar.current.complete();
+            }
+                
+            else{
                 toast.error('Houve um erro! Tente novamente.');
+                await loadingBar.current.complete();
+            }
         }
 
     }
@@ -87,7 +78,13 @@ export default function CadastroPet(props)  {
     return (
     <div class="inicioCPet">
 
-        <Cabecalho props={af}/>
+            <LoadingBar
+                height={4}
+                color='#f11946'
+                ref={loadingBar} 
+            />
+
+        <Cabecalho />
 
         <div class="boxCPet">
 
@@ -843,7 +840,7 @@ export default function CadastroPet(props)  {
                 pauseOnFocusLoss
                 draggable={false}
                 pauseOnHover={false}
-            />
+        />
     
     </div>
     

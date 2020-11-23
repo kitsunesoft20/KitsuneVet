@@ -19,17 +19,7 @@ import Cookies from 'js-cookie';
 export default function Home()  {
 
     try {
-        if( typeof(Cookies.getJSON('Login').logado) == 'undefined'){ 
-
-            Cookies.set( 'Login', {
-                    email: '',
-                    idCliente: 0,
-                    nomeCliente: '',
-                    logado: false
-                }
-            );
-
-        }
+       const ex = typeof(Cookies.getJSON('Login').logado) == 'undefined';
     }
 
     catch (e) {
@@ -37,6 +27,7 @@ export default function Home()  {
             email: '',
             idCliente: 0,
             nomeCliente: '',
+            pets: [],
             logado: false
         }
     );

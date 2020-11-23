@@ -14,7 +14,7 @@ namespace BackEnd.Controllers.Response
 
         public string NomeCliente { get; set; }
 
-        public List<kitsunevet.Models.TbPet> tbPet { get; set; }
+        public List<PetsResponse> tbPet { get; set; }
 
     }
 }

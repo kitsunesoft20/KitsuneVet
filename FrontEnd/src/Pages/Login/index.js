@@ -37,18 +37,17 @@ export default function Login()  {
 
             const resp = await api.FazerLogin(request);
 
-            console.log(resp);
-
             Cookies.set( 'Login', {
                 email: resp.data.email,
                 idCliente: resp.data.idCliente,
                 nomeCliente: resp.data.nomeCliente,
+                pets: resp.data.tbPet,
                 logado: true
             });
 
             toast.info("Logado! 😺 ")
-
             await loadingBar.current.complete();
+
             window.setTimeout(() => 
                 history.push( '/' ), 1000
             );
@@ -66,7 +65,6 @@ export default function Login()  {
             }
         }
 
-
     }
 
     return (
@@ -79,7 +77,7 @@ export default function Login()  {
                 ref={loadingBar} 
             />
 
-            <Cabecalho props={cookie}/>
+            <Cabecalho />
 
             <div className="bodylogin">
                 

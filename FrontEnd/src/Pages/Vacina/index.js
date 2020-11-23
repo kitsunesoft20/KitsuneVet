@@ -19,28 +19,6 @@ const api = new KitsuneVetApi();
 
 export default function Vacina(props)  {
 
-    const [logado,setLogado] = useState(false);
-    const [emailP,setEmailP] = useState('');
-    const [idCliente,setidCliente] = useState('');
-    const [nomeCliente,setNomeCliente] = useState('');
-
-    useEffect(() => {
-        if(props.location.state !== undefined)
-        {
-            setLogado(true);
-            setEmailP(props.location.state.email);
-            setidCliente(props.location.state.idCliente);
-            setNomeCliente(props.location.state.nomeCliente);
-        }
-    });
-
-    const af = {
-        email: emailP,
-        idCliente: idCliente,
-        logado: logado,
-        nomeCliente: nomeCliente
-    };
-
     const [IdCliente, setIdCliente] = useState('');
     const [IdPet, setIdPet] = useState('');
     const [Vacina, setVacinas] = useState('');

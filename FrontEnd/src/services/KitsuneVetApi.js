@@ -22,15 +22,22 @@ export default class KitsuneVetApi {
         const resp = await api.post('/cadastroPet', cad);
         return resp;
     }
-    
-    async AgendarVacina(req){
-        const resp = await api.post('/agendamentovacina', req);
-        return resp;
-    }
 
     async AgendarBanhoTosa(req){
         const resp = await api.post('/agendamentobanhoetosa', req);
         return resp;
     }
+    
+    async AgendarCirurgia(req){
+        const resp = await api.post('/agendamentocirurgia', req);
+        return resp;
+    }
+
+    async AgendarExame(req){
+        const resp = await api.post('/agendamentoexame', req);
+        return resp;
+    }
+
+    
 
 }

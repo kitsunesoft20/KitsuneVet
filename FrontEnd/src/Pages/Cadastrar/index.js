@@ -14,7 +14,7 @@ import familia from './imagens/familia.png';
 
 const api = new KitsuneVetApi();
 
-export default function Cadastrar(props)  {
+export default function Cadastrar()  {
 
     const [Nome, setNome] = useState('')
     const [Sexo, setSexo] = useState('')
@@ -28,10 +28,15 @@ export default function Cadastrar(props)  {
     const [Cep, setCep] = useState('')
     const [Senha, setSenha] = useState('')
 
+    let history = useHistory();
+    const loadingBar = useRef(null);
 
     const salvarClick = async () => {
 
         try {
+
+            loadingBar.current.continuousStart();
+
             const request = {
                 nome: Nome,
                 sexo: Sexo,
@@ -45,21 +50,40 @@ export default function Cadastrar(props)  {
                 cep: Cep,
                 senha: Senha
             };
+
             const resp = await api.CadastrarCliente(request);
+
             toast("Cadastrado com Sucesso 😼");
+            await loadingBar.current.complete();
+
+            window.setTimeout(() => 
+                history.push( '/login' ), 2000
+            );
+
         } 
 
         catch (e) {
-            if(e.response.data.erro)
+            if(e.response.data.erro){
                 toast.error(e.response.data.erro);
-            else
+                await loadingBar.current.complete();
+            }
+                
+            else{
                 toast.error('Houve um erro! Tente novamente.');
+                await loadingBar.current.complete();
+            }
         }
 
     }
 
     return (
         <div>
+
+            <LoadingBar
+                height={4}
+                color='#f11946'
+                ref={loadingBar} 
+            />
 
             <Cabecalho />
     

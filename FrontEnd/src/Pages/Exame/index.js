@@ -2,46 +2,83 @@
 import React, { useEffect, useState } from 'react'
 
 import './exame.css';
-
 import Cabecalho from '../../Components/Cabecalho'
 import Rodape from '../../Components/Rodape'
 
-export default function Exame(props)  {
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-    const [logado,setLogado] = useState(false);
-    const [emailP,setEmailP] = useState('');
-    const [idCliente,setidCliente] = useState('');
-    const [nomeCliente,setNomeCliente] = useState('');
+import Cookies from 'js-cookie';
 
-    useEffect(() => {
-        if(props.location.state !== undefined)
-        {
-            setLogado(true);
-            setEmailP(props.location.state.email);
-            setidCliente(props.location.state.idCliente);
-            setNomeCliente(props.location.state.nomeCliente);
-        }
-    });
+import LoadingBar from 'react-top-loading-bar';
+import KitsuneVetApi from '../../services/KitsuneVetApi';
 
-    const af = {
-        email: emailP,
-        idCliente: idCliente,
-        logado: logado,
-        nomeCliente: nomeCliente
-    };
+const api = new KitsuneVetApi();
+
+export default function Exame()  {
 
     const[Exame,setExame]= useState('')
     const[Pet,setPet]= useState('')
-    const[TpExame,setTpExame]= useState('')
     const[DtAtendimento,setDtAtendimento]= useState('')
     const[Horario,setHorario]= useState('')
     const[local,setlocal]= useState('')
-    const[Endereco,setEndereco]= useState('')
+    const[Observacoes,setObservacoes]= useState('')
+
+    const cookie = Cookies.getJSON('Login');
+
+    let history = useHistory();
+    const loadingBar = useRef(null);
+
+    const salvarClick = async () => {
+
+        try {
+
+            loadingBar.current.continuousStart();
+
+            const request = {
+                IdCliente: cookie.IdCliente,
+                IdPet: Pet,
+                Exame: Exame,
+                Data: DtAtendimento,
+                Local: local,
+                Observacoes: Observacoes
+            };
+
+            const resp = await api.AgendarExame(request);
+
+            toast("Agendado com Sucesso! 😼");
+            await loadingBar.current.complete();
+
+            window.setTimeout(() => 
+                history.push( '/' ), 2000
+            );
+
+        }
+
+        catch (e) {
+            if(e.response.data.erro){
+                toast.error(e.response.data.erro);
+                await loadingBar.current.complete();
+            }
+                
+            else{
+                toast.error('Houve um erro! Tente novamente.');
+                await loadingBar.current.complete();
+            }
+        }
+
+    }
 
     return (
         <body>
 
-            <Cabecalho props={af}/>
+            <LoadingBar
+                height={4}
+                color='#f11946'
+                ref={loadingBar} 
+            />
+
+            <Cabecalho />
 
             <form >
                 <div class="tudo">
@@ -51,37 +88,61 @@ export default function Exame(props)  {
                             <h1>Exames</h1>
                         </div>
                 
-                        <div class="um">
-                            <select name="pet" placeholder="pet">
-                                <option value="Pet"> Pet </option>
-                                <option value="Nome"> Nome </option>
-                            </select>
-                        </div>
+                        <select
+                        value={Pet}
+                        onChange ={x => setPet (x.target.value)}
+                        >
+                                <option value="" disabled selected> Selecione uma opção </option>
+                                {cookie.pets.map(item =>
+                                    <option value={item.idPet}>{item.nomePet}</option>
+                                )}
+                                
+                        </select>
                 
                         <div class="dois">
-                            <select name="Tipo" placeholder="tipo">
-                                <option value="Tipo de Exame"> Tipo de Exame </option>
+
+                            <select 
+                            value={Exame}
+                            onChange ={x => setExame (x.target.value)}
+                            >
+                                <option value="" disabled selected> Selecione uma opção </option>
                                 <option value="Oftalmologista"> Oftalmologista </option>
                             </select>
+
                         </div>
                 
                         <div class="tres">
+
                             <h3>Data do Atendimento</h3>
-                            <input type="date" />
+                            <input type="date" 
+                            value={DtAtendimento}
+                            onChange ={x => setDtAtendimento (x.target.value)}
+                            />
                         </div>
                 
                         <div class="quatro">
+
                             <h3>Horário</h3>   
                             <div class="for">
-                                <input type="time" />
+                                <input type="time" 
+                                value={Horario}
+                                onChange ={x => setHorario (x.target.value)}
+                                />
                             </div>
+
                         </div>
                 
                         <div class="cinco">
-                            <select name="loc" placeholder="loc">
-                                <option value="local"> local </option>
-                                <option value="Nome"> endereço </option>
+
+                            <select name="local"
+                            value={local}
+                            onChange ={x => setlocal (x.target.value)}
+                            >
+                                <option value="" disabled selected> </option>
+                                <option value="KitsuneVet Santo Amaro"> KitsuneVet Santo Amaro </option>
+                                <option value="KitsuneVet Jardim São Bernardo"> KitsuneVet Jardim São Bernardo </option>
                             </select>
+
                         </div>
                 
                         <div class="seis">
@@ -89,7 +150,7 @@ export default function Exame(props)  {
                         </div>
                     
                         <div class="sete">
-                            <button class= "bt"><h3>Prosseguir</h3></button>
+                        <button className="bt" onClick={salvarClick}> Agendar </button>
                         </div>
             
                     </div>
@@ -99,6 +160,18 @@ export default function Exame(props)  {
             </form>
             
             <Rodape/>
+
+            <ToastContainer
+                position="top-right"
+                autoClose={2000}
+                hideProgressBar
+                newestOnTop={false}
+                closeOnClick={false}
+                rtl={false}
+                pauseOnFocusLoss
+                draggable={false}
+                pauseOnHover={false}
+            />
 
         </body>
     );

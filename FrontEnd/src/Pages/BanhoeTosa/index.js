@@ -32,12 +32,18 @@ export default function BanhoeTosa()  {
 
     const cookie = Cookies.getJSON('Login');
 
+    let history = useHistory();
+    const loadingBar = useRef(null);
+
     const salvarClick = async () => {
 
         try {
+
+            loadingBar.current.continuousStart();
+
             const request = {
                 IdCliente: cookie.IdCliente,
-                IdPet: "IdPet",
+                IdPet: Pet,
                 Banho: Banho,
                 Tosa: Tosa,
                 Unhas: Unhas,
@@ -45,15 +51,28 @@ export default function BanhoeTosa()  {
                 Data: Data,
                 Local: Local
             };
-            const resp = await api.CadastrarCliente(request);
-            toast("Cadastrado com Sucesso 😼");
+
+            const resp = await api.AgendarBanhoTosa(request);
+
+            toast("Agendado com Sucesso! 😼");
+            await loadingBar.current.complete();
+
+            window.setTimeout(() => 
+                history.push( '/' ), 2000
+            );
+
         }
 
         catch (e) {
-            if(e.response.data.erro)
+            if(e.response.data.erro){
                 toast.error(e.response.data.erro);
-            else
+                await loadingBar.current.complete();
+            }
+                
+            else{
                 toast.error('Houve um erro! Tente novamente.');
+                await loadingBar.current.complete();
+            }
         }
 
     }
@@ -61,6 +80,12 @@ export default function BanhoeTosa()  {
     return (
 
         <div className="inicioBeT">
+
+            <LoadingBar
+                height={4}
+                color='#f11946'
+                ref={loadingBar} 
+            />
 
             <Cabecalho />
     
@@ -131,7 +156,7 @@ export default function BanhoeTosa()  {
                             value={Local}
                             onChange ={x => setLocal (x.target.value)}
                             >
-                                <option value="" disabled selected> </option>
+                                <option value="" disabled selected>  </option>
                                 <option value="KitsuneVet Santo Amaro"> KitsuneVet Santo Amaro </option>
                                 <option value="KitsuneVet Jardim São Bernardo"> KitsuneVet Jardim São Bernardo </option>
                             </select>
@@ -141,6 +166,9 @@ export default function BanhoeTosa()  {
                             onChange ={x => setPet (x.target.value)}
                             >
                                 <option value="" disabled selected> Selecione uma opção </option>
+                                {cookie.pets.map(item =>
+                                    <option value={item.idPet}>{item.nomePet}</option>
+                                )}
                                 
                             </select>
     
@@ -149,7 +177,7 @@ export default function BanhoeTosa()  {
                     </div>
     
                     <div className="botaoBeT">
-                        <button> Agendar </button>
+                        <button onClick={salvarClick}> Agendar </button>
                     </div>
     
                 </div> 
@@ -161,6 +189,18 @@ export default function BanhoeTosa()  {
             </div>
     
             <Rodape />
+
+            <ToastContainer
+                position="top-right"
+                autoClose={2000}
+                hideProgressBar
+                newestOnTop={false}
+                closeOnClick={false}
+                rtl={false}
+                pauseOnFocusLoss
+                draggable={false}
+                pauseOnHover={false}
+            />
 
         </div>
         
