@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useRef, useState } from 'react'
 
 import './cadastrarpet.css';
 import { ToastContainer, toast } from 'react-toastify';
@@ -13,6 +13,8 @@ import Rodape from '../../Components/Rodape';
 import imagem1 from './imagens/puggif.gif';
 import imagem2 from './imagens/pet.png';
 
+import LoadingBar from 'react-top-loading-bar';
+import Cookies from 'js-cookie';
 import { useHistory } from "react-router-dom";
 
 const api = new KitsuneVetApi();
@@ -40,7 +42,7 @@ export default function CadastroPet()  {
             loadingBar.current.continuousStart();
 
             const request = {
-                IdCliente: cookie.IdCliente,
+                IdCliente: cookie.idCliente,
                 TipoPet: Tipo,
                 nomepet: Nome,
                 Sexo: Sexo,

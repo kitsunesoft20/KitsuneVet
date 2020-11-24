@@ -28,8 +28,8 @@ export default function Vacina()  {
     const [Observacoes, setObservacoes] = useState('');
     const [Local, setLocal] = useState('');
 
+    const cookie = Cookies.getJSON('Login');
     let history = useHistory();
-
     const loadingBar = useRef(null);
 
     const salvarClick = async () => {
@@ -39,7 +39,7 @@ export default function Vacina()  {
             loadingBar.current.continuousStart();
 
             const request = {
-                IdCliente: cookie.IdCliente,
+                IdCliente: cookie.idCliente,
                 IdPet: Pet,
                 Vacina : Vacina,
                 Data : Data,

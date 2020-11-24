@@ -1,8 +1,8 @@
 
-import { Link, useHistory } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import './home.css';
 import Cabecalho from '../../Components/Cabecalho';

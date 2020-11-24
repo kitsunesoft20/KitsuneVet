@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useRef, useState } from 'react'
 import './cadastrar.css';
 
 import { ToastContainer, toast } from 'react-toastify';
@@ -11,6 +11,9 @@ import Rodape from '../../Components/Rodape'
 import KitsuneVetApi from '../../services/KitsuneVetApi';
 import detalhes from './imagens/detalhes.png';
 import familia from './imagens/familia.png';
+
+import LoadingBar from 'react-top-loading-bar';
+import { useHistory } from 'react-router-dom';
 
 const api = new KitsuneVetApi();
 

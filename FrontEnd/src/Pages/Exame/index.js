@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import './exame.css';
 import Cabecalho from '../../Components/Cabecalho'
@@ -12,6 +12,7 @@ import Cookies from 'js-cookie';
 
 import LoadingBar from 'react-top-loading-bar';
 import KitsuneVetApi from '../../services/KitsuneVetApi';
+import { useHistory } from 'react-router-dom';
 
 const api = new KitsuneVetApi();
 
@@ -36,7 +37,7 @@ export default function Exame()  {
             loadingBar.current.continuousStart();
 
             const request = {
-                IdCliente: cookie.IdCliente,
+                IdCliente: cookie.idCliente,
                 IdPet: Pet,
                 Exame: Exame,
                 Data: DtAtendimento,

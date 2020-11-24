@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import './CirurgiaPet.css'
 import Cabecalho from '../../Components/Cabecalho'
@@ -8,10 +8,14 @@ import Rodape from '../../Components/Rodape'
 import imagem1 from './imagens/cirurgia01.png';
 import imagem2 from './imagens/gatinho.png';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import Cookies from 'js-cookie';
 
 import LoadingBar from 'react-top-loading-bar';
 import KitsuneVetApi from '../../services/KitsuneVetApi';
+import { useHistory } from 'react-router-dom';
 
 const api = new KitsuneVetApi();
 
@@ -37,7 +41,7 @@ export default function Cirurgia()  {
 
             const request = {
                 IdPet: Pet,
-                IdCliente: cookie.IdCliente,
+                IdCliente: cookie.idCliente,
                 Cirurgia: TipoCirurgia,
                 Data: DtCirurgia,
                 Local: local,

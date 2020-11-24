@@ -7,13 +7,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace kitsunevet.Controllers
 {
-    public class agendamentoHotelController
-    {
 
-        [ApiController]
-        [Route("[controller]")]
-        public class agendamentohospedagemController : ControllerBase
-        {
+    [ApiController]
+    [Route("[controller]")]
+    public class agendamentohospedagemController : ControllerBase
+    {
         Models.veterinarioContext ctx = new Models.veterinarioContext();
 
         [HttpPost]
@@ -34,10 +32,7 @@ namespace kitsunevet.Controllers
                 );
             }
 
-            
-
         }
             
-        }
     }
 }

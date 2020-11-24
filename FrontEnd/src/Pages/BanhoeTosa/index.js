@@ -1,5 +1,5 @@
 
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 
 import './banhoetosa.css'
 import Cabecalho from '../../Components/Cabecalho';
@@ -15,6 +15,7 @@ import Cookies from 'js-cookie';
 
 import LoadingBar from 'react-top-loading-bar';
 import KitsuneVetApi from '../../services/KitsuneVetApi';
+import { useHistory } from 'react-router-dom';
 
 const api = new KitsuneVetApi();
 
@@ -42,13 +43,13 @@ export default function BanhoeTosa()  {
             loadingBar.current.continuousStart();
 
             const request = {
-                IdCliente: cookie.IdCliente,
+                IdCliente: cookie.idCliente,
                 IdPet: Pet,
                 Banho: Banho,
                 Tosa: Tosa,
                 Unhas: Unhas,
                 Dentes: Dentes,
-                Data: Data,
+                Data: Data + "T" + Horario,
                 Local: Local
             };
 
@@ -118,23 +119,23 @@ export default function BanhoeTosa()  {
                         <form className="formulariosBeT">
                             
                             <input type="checkbox"
-                                value={Banho}
-                                onChange ={x => setBanho(x.target.value)}
+                                value= {Banho} 
+                                onChange ={x => setBanho(Boolean(x.target.value))}
                             />
                             
                             <input type="checkbox"
                                 value={Tosa}
-                                onChange ={x => setTosa(x.target.value)}
+                                onChange ={x => setTosa(Boolean(x.target.value))}
                             />
     
                             <input type="checkbox" 
                             value={Unhas}
-                            onChange ={x => setUnhas (x.target.value)}
+                            onChange ={x => setUnhas (Boolean(x.target.value))}
                             />
                             
                             <input type="checkbox" 
                             value={Dentes}
-                            onChange ={x => setDentes (x.target.value)}
+                            onChange ={x => setDentes (Boolean(x.target.value))}
                             />
                            
                             <input type="text" 

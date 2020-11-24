@@ -7,22 +7,24 @@ using Microsoft.EntityFrameworkCore;
 
 namespace kitsunevet.Controllers
 {
-    
+
     [ApiController]
     [Route("[controller]")]
-    public class CadastroPetController : ControllerBase
-    {
+    public class agendamentocirurgiaController : ControllerBase{
+
+        Models.veterinarioContext ctx = new Models.veterinarioContext();
 
         [HttpPost]
-        public ActionResult <BackEnd.Controllers.Response.CadastroPetResponse> SalvarPet (BackEnd.Controllers.Request.CadastroPetRequest request)
-        {
+        public ActionResult <BackEnd.Controllers.Response.CirurgiaResponse> Cirurgia (BackEnd.Controllers.Request.CirurgiaRequest request){
+
             try
             {
-                Business.CadastroPetBusiness business = new Business.CadastroPetBusiness();
+                Business.CirurgiaBusiness business = new Business.CirurgiaBusiness();
 
-                BackEnd.Controllers.Response.CadastroPetResponse response = business.CadastrarPet(request);
+                BackEnd.Controllers.Response.CirurgiaResponse response = business.AgendamentoCirurgia(request);
 
                 return response;
+
             }
             catch (System.Exception ex)
             {
@@ -30,10 +32,9 @@ namespace kitsunevet.Controllers
                     new BackEnd.Controllers.Response.ErroResponse(ex, 400)
                 );
             }
-            
-            
-                     
+
         }
 
     }
+
 }

@@ -11,7 +11,6 @@ namespace kitsunevet.Controllers
     public class CadastroController : ControllerBase
     {
 
-
         [HttpPost]
         public ActionResult<BackEnd.Controllers.Response.CadastroClienteResponse> Salvar(BackEnd.Controllers.Request.CadastroClienteRequest request)
         {
