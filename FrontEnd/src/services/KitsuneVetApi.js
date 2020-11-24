@@ -48,4 +48,9 @@ export default class KitsuneVetApi {
         return resp;
     }
 
+    async Perfil(id){
+        const resp = await api.get('/perfil', id);
+        return resp;
+    }
+
 }

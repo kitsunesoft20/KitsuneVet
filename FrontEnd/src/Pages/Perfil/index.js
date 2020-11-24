@@ -1,6 +1,8 @@
 
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useHistory } from "react-router-dom";
 
 import './perfil.css'
 import Cabecalho from '../../Components/Cabecalho'
@@ -8,7 +10,22 @@ import Rodape from '../../Components/Rodape'
 
 import imagem1 from './imagens/catgif.gif'
 
+import KitsuneVetApi from '../../services/KitsuneVetApi';
+import LoadingBar from 'react-top-loading-bar';
+import Axios from 'axios';
+
+import Cookies from 'js-cookie';
+const api = new KitsuneVetApi();
+
 export default function Perfil (){
+
+    const cookie = Cookies.getJSON('Login');
+
+    const [dados,setDados] = useState([]);
+
+        const ex = api.Perfil(cookie.idLogin);
+        console.log(ex);
+
 
     return (
         <div>
@@ -26,8 +43,10 @@ export default function Perfil (){
 
                         <div class= "infoPerf">
                             <label>Nome: </label>
+                            <h2> {dados.nmCliente} </h2>
 
                             <label>E-mail:</label>
+                            <h2>{dados.DsEmail} </h2>
                             
                             <label>CPF:</label>
                             

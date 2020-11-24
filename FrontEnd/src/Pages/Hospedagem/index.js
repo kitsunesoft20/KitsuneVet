@@ -153,7 +153,7 @@ export default function Hospedagem()  {
 
                             <input type="checkbox" 
                             value={Delivery}
-                            onChange ={x => setDelivery (x.target.value)}
+                            onChange ={x => setDelivery (Boolean(x.target.value))}
                             />
 
                             Entregue em casa? (Será levado ao endereço associado a esta conta)
