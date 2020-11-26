@@ -21,44 +21,115 @@ export default function Perfil (){
 
     const cookie = Cookies.getJSON('Login');
 
-    const [dados,setDados] = useState([]);
+    try {
+        const ex = typeof(Cookies.getJSON('infoPerfil').email) == 'undefined';
+    }
+ 
+     catch (e) {
+        Cookies.set('infoPerfil', 
+            {
+                email: '---',
+                nome: '---',
+                sexo: '---',
+                nascimento: '---',
+                telefone: '---',
+                cpf: '---',
+                rg: '---',
+                endereco: '---',
+                complemento: '---',
+                cep: '---'
+            }
+        );
+    }
 
-        const ex = api.Perfil(cookie.idLogin);
-        console.log(ex);
+    const Click = async () =>  {
 
+        const req = {
+            idPerfil: cookie.idCliente
+        }
+
+        const resp = await api.Perfil(req);
+
+        Cookies.set('infoPerfil', 
+            {
+                email: resp.data.email,
+                nome: resp.data.nome,
+                sexo: resp.data.sexo,
+                nascimento: resp.data.nascimento,
+                telefone: resp.data.telefone,
+                cpf: resp.data.cpf,
+                rg: resp.data.rg,
+                endereco: resp.data.endereco,
+                complemento: resp.data.complemento,
+                cep: resp.data.cep
+
+            }
+        );
+
+        window.location.reload(false);
+
+    }
+
+    const infos = Cookies.getJSON('infoPerfil');
 
     return (
         <div>
 
             <Cabecalho />
 
-            <div class="caixaPerf">
-                <div class ="boxPerf">
+            <div className="caixaPerf">
+                <div className ="boxPerf">
 
-                    <div class="titperfil">
+                    <div className="titperfil">
                         {'{'} Perfil {'}'}
                     </div>
 
                     <div className="subboxPerf">
 
-                        <div class= "infoPerf">
-                            <label>Nome: </label>
-                            <h2> {dados.nmCliente} </h2>
+                        <div className= "infoPerf">
 
-                            <label>E-mail:</label>
-                            <h2>{dados.DsEmail} </h2>
+                            <button onClick={Click} > af</button>  
+
+                            <div className="linha">
+                                <label>Nome: </label>
+                                &nbsp; &nbsp; {infos.nome}
+                            </div>
+
+                            <div className="linha">
+                                <label>E-mail:</label>
+                                &nbsp; &nbsp; {infos.email} 
+                            </div>
                             
-                            <label>CPF:</label>
+                            <div className="linha">
+                                <label>CPF:</label>
+                                &nbsp; &nbsp; {infos.cpf}
+                            </div>
+
+                            <div className="linha">                            
+                                <label>Data de Nascimento:</label>
+                                &nbsp; &nbsp; {infos.nascimento}
+                            </div>
                             
-                            <label>Data de nascimento:</label>
+                            <div className="linha"> 
+                                <label>Endereço:</label>
+                                &nbsp; &nbsp; {infos.endereco}
+                            </div>
                             
-                            <label>Endereço:</label>
+                            <div className="linha"> 
+                                <label>Complemento:</label>
+                                &nbsp; &nbsp; {infos.complemento}
+                            </div>
                             
-                            <label>Complemento:</label>
+                            <div className="linha"> 
+                                <label>CEP:</label>
+                                &nbsp; &nbsp; {infos.cep}
+                            </div>
                             
-                            <label>CEP:</label>
-                            
-                            <label>Sexo:</label>
+                            <div className="linha"> 
+                                <label>Sexo:</label>
+                                &nbsp; &nbsp; {infos.sexo}
+                            </div>
+
                         </div>
 
                         <div className="imagemPerf">

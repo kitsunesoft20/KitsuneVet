@@ -19,18 +19,18 @@ import Cookies from 'js-cookie';
 export default function Home()  {
 
     try {
-       const ex = typeof(Cookies.getJSON('Login').logado) == 'undefined';
-    }
-
-    catch (e) {
-        Cookies.set( 'Login', {
-            email: '',
-            idCliente: 0,
-            nomeCliente: '',
-            pets: [],
-            logado: false
-        }
-    );
+        const ex = typeof(Cookies.getJSON('Login').logado) == 'undefined';
+     }
+ 
+     catch (e) {
+         Cookies.set( 'Login', {
+             email: '',
+             idCliente: 0,
+             nomeCliente: '',
+             pets: [],
+             logado: false
+         }
+     );
     }
 
     const cookie = Cookies.getJSON('Login');

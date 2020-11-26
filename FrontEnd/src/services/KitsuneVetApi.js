@@ -48,8 +48,8 @@ export default class KitsuneVetApi {
         return resp;
     }
 
-    async Perfil(id){
-        const resp = await api.get('/perfil', id);
+    async Perfil(req){
+        const resp = await api.post('/perfil', req);
         return resp;
     }
 

@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
 import Cookies from 'js-cookie';
 
-export default function Cabecalho() {
+export default function Cabecalho() {    
 
     const cookie = Cookies.getJSON('Login');
     const history = useHistory();
@@ -20,6 +20,21 @@ export default function Cabecalho() {
                 nomeCliente: '',
                 pets: [],
                 logado: false
+            }
+        );
+
+        Cookies.set('infoPerfil', 
+            {
+                email: '---',
+                nome: '---',
+                sexo: '---',
+                nascimento: '---',
+                telefone: '---',
+                cpf: '---',
+                rg: '---',
+                endereco: '---',
+                complemento: '---',
+                cep: '---'
             }
         );
 

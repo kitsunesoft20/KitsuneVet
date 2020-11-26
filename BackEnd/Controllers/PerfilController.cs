@@ -13,18 +13,18 @@ namespace kitsunevet.Controllers
     public class PerfilController : ControllerBase
     {
         
-        [HttpGet]
-        public ActionResult<List<Models.TbCliente>> GetPerfil( int id)
+        [HttpPost]
+        public ActionResult<BackEnd.Controllers.Response.PerfilResponse> GetPerfil(BackEnd.Controllers.Request.PerfilRequest request)
         {
+
+            Database.PerfilDatabase database = new Database.PerfilDatabase();
+
             try
             {
+                BackEnd.Controllers.Response.PerfilResponse response = database.GetPerfil(request);
 
-                Models.veterinarioContext ctx = new Models.veterinarioContext();
-
-                List<Models.TbCliente> cliente = ctx.TbCliente
-                    .Where(x => x.IdCliente == id).ToList();
+                return response;
                 
-                return cliente;
             }
             catch (System.Exception ex)
             {
