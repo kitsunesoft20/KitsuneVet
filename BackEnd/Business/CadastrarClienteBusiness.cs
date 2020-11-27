@@ -13,8 +13,11 @@ namespace kitsunevet.Business
 
             Database.CadastroClienteDatabase database = new Database.CadastroClienteDatabase();
 
-            if (string.IsNullOrEmpty(request.Nome))
+            if (string.IsNullOrEmpty(request.Nome) || (request.Nome).Length <= 0)
             throw new Exception("Nome Inválido");
+            
+            if (string.IsNullOrEmpty(request.Email) || (request.Email).Length <= 0)
+            throw new Exception("Email Inválido");
 
             if(request.Senha.Length < 8)
             throw new Exception("A Senha não pode ter menos que 8 caracteres");
@@ -31,7 +34,7 @@ namespace kitsunevet.Business
             if(request.Rg.Length != 9 )
             throw new Exception("O RG não poderá ter menos ou mais do que 9 números");
 
-            if(string.IsNullOrEmpty(request.Endereco))
+            if(string.IsNullOrEmpty(request.Endereco) || (request.Endereco).Length <= 0)
             throw new Exception("Endereço Inválido");
 
             if(request.Cep.Length != 8)

@@ -27,7 +27,8 @@ namespace kitsunevet.Database
             response.NomeCliente = Login.NmCliente;
             response.tbPet = pets.Select(x => new BackEnd.Controllers.Response.PetsResponse {
               idPet = x.IdPet,
-              nomePet = x.NmPet
+              nomePet = x.NmPet,
+              tipoPet = x.TpPet
             }).ToList();
 
             return response;

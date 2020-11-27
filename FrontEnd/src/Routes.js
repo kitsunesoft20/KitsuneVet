@@ -12,6 +12,7 @@ import BanhoeTosa from './Pages/BanhoeTosa';
 import Login from './Pages/Login';
 import CadastroPet from './Pages/CadastroPet';
 import Perfil from './Pages/Perfil';
+import AlterarPerfil from './Pages/AlterarPerfil';
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
@@ -31,6 +32,7 @@ export default function Routes() {
           <Route path="/agendamentoexame" component={Exame} />
           <Route path="/agendamentobanhoetosa" component={BanhoeTosa} />
           <Route path="/Perfil" component={Perfil} />
+          <Route path="/alterarperfil" component={AlterarPerfil} />
           <Route path="*" component={NotFound} />
         </Switch>
     </BrowserRouter>

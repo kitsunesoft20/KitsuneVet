@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import './perfil.css'
 import Cabecalho from '../../Components/Cabecalho'
@@ -25,7 +25,7 @@ export default function Perfil (){
         const ex = typeof(Cookies.getJSON('infoPerfil').email) == 'undefined';
     }
  
-     catch (e) {
+    catch (e) {
         Cookies.set('infoPerfil', 
             {
                 email: '---',
@@ -88,7 +88,7 @@ export default function Perfil (){
 
                         <div className= "infoPerf">
 
-                            <button onClick={Click} > af</button>  
+                            <button onClick={Click} className="btPerf"> Mostrar Informações</button>  
 
                             <div className="linha">
                                 <label>Nome: </label>
@@ -107,7 +107,7 @@ export default function Perfil (){
 
                             <div className="linha">                            
                                 <label>Data de Nascimento:</label>
-                                &nbsp; &nbsp; {infos.nascimento}
+                                &nbsp; &nbsp; {new Date(infos.nascimento + 'Z').toLocaleDateString()}
                             </div>
                             
                             <div className="linha"> 
@@ -140,7 +140,7 @@ export default function Perfil (){
 
                     <div>
                         <button className="btPerf">
-                            Alterar dados cadastrais
+                            <Link to="/AlterarPerfil"> Alterar Dados Cadastrais </Link>
                         </button>
                     </div>
                     

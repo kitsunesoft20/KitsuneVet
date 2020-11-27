@@ -44,11 +44,10 @@ export default function Vacina()  {
                 Vacina : Vacina,
                 Data : Data,
                 Local: Local,
-                Observacoes: Observacoes,
+                Observacoes: Observacoes
             };
 
             const resp = await api.AgendarVacina(request);
-
             toast("Agendado com Sucesso! 😼");
             await loadingBar.current.complete();
 
@@ -100,10 +99,9 @@ export default function Vacina()  {
                         <div class="elsa">
 
                             <div class="dsformularios">
-                                <h4> Pet:</h4>
-                                <h4> Vacinas de Cachorro:</h4>
-                                <h4> Vacinas de Gato: </h4>
-                                <h4> Horario:</h4>
+                                <h4> Pet: </h4>
+                                <h4> Vacinas: </h4>
+                                <h4> Horário: </h4>
                                 <h4> Data de Atendimento: </h4>
                                 <h4> Local: </h4>
                                 <h4> Observações: </h4>
@@ -123,22 +121,16 @@ export default function Vacina()  {
                                     
                                 </select>
                                 
-                                <select name="vacinasCachorro">
+                                <select name="vacinas">
                                     <option value="" disabled selected> </option>
-                                    <option value="v8 ou v10"> V8 ou V10 </option>
-                                    <option value="gripe canina"> Gripe Canina </option>
-                                    <option value="giardíese"> Giardíese </option>
-                                    <option value="antí-rábica"> Antí-rábica(Raiva) </option>
-                                </select>
-
-
-                                <select name="vacinasGato">
-                                    <option value="" disabled selected> </option>
-                                    <option value="quádrupla felina"> Quádrupla Felina(1 Dose) </option>
-                                    <option value="quádrupla felina"> Quádrupla Felina(2 Dose) </option>
-                                    <option value="quádrupla felina"> Quádrupla Felina(3 Dose) </option>
-                                    <option value="antí-rábica"> Antí-rábica(Raiva) </option>
-                                    <option value="quádrupla felina"> Quádrupla dose unica(A partir do 1 ano de idade)</option>
+                                    <option value="v8 ou v10"> V8 ou V10 (Canina)</option>
+                                    <option value="gripe canina"> Gripe Canina (Canina) </option>
+                                    <option value="giardíese"> Giardíese (Canina) </option>
+                                    <option value="antí-rábica"> Antí-rábica(Raiva) (Ambos) </option>
+                                    <option value="quádrupla felina"> Quádrupla Felina (1 Dose) (Felina) </option>
+                                    <option value="quádrupla felina"> Quádrupla Felina (2 Dose) (Felina) </option>
+                                    <option value="quádrupla felina"> Quádrupla Felina (3 Dose) (Felina) </option>
+                                    <option value="quádrupla felina"> Quádrupla dose única (A partir do 1 ano de idade) (Felina) </option>
                                 </select>
                                 
                                 <input type="time"

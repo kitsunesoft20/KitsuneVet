@@ -1,0 +1,101 @@
+
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+@font-face{
+    font-family: chicken;
+    src: url(./fontes/ChickenQuiche.otf);
+}
+
+.titperfil{
+    color: #000000;
+    font-size: 45px;
+    font-family: chicken;
+}
+
+.caixaAP{
+    height: 100vh;
+    background-image: linear-gradient(315deg, #63a4ff 0%, #83eaf1 74%);    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.boxAP{
+    box-shadow:3px 3px 5px 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80vw;
+    height: 100vh;
+    justify-content: space-around;
+    background-color: white;
+}
+
+.subboxAP{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 60;
+}
+
+.infoAP{
+    height: 50vh;
+    width: 40vw;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.infoAP input, .infoAP select{
+    font-size: 15px;
+    padding: 3px;
+    padding-left: 15px;
+    border: 1px solid black;
+    border-radius: 16px;
+    width: 20vw;
+    height: 4vh;
+    box-shadow: 1px 1px 1px gray;
+}
+
+.imagemAP{
+    height: 40vh;
+    width: 30vw;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.linha{
+    display: flex;
+    flex-direction: row;
+    font-size: 20px;
+    margin-left: 5px;
+}
+
+
+.btAP {
+    background-color: white;
+    font-size: 16px;
+    border:2px solid black;
+    border-radius: 15px;
+    font-size: 18px;
+    width: 16vw;
+    height: 5vh;
+    font-weight: bold;
+}
+
+.btAP :hover{
+    box-shadow: 5px 5px 5px gray;
+    cursor: pointer;
+    border: #7255b2 solid 2px;
+}

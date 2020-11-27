@@ -5,5 +5,7 @@ namespace BackEnd.Controllers.Response
         public string nomePet { get; set; }
 
         public int idPet { get; set; }
+
+        public string tipoPet { get; set; }
     }
 }
