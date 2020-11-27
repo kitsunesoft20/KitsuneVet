@@ -29,6 +29,7 @@ namespace kitsunevet.Database
             response.Cep = cliente.DsCep;
             response.Nascimento = cliente.DtNascimento;
             response.Sexo = cliente.DsSexo;
+            response.idPerfil = cliente.IdCliente;
 
             return response;
 

@@ -20,22 +20,56 @@ const api = new KitsuneVetApi();
 
 export default function AlterarCadastro() {
 
-    const [Nome, setNome] = useState('')
-    const [Sexo, setSexo] = useState('')
-    const [Nascimento, setNascimento] = useState('')
-    const [Email, setEmail] = useState('')
-    const [Telefone, setTelefone] = useState('')
-    const [Cpf, setCpf] = useState('')
-    const [Rg, setRg] = useState('')
-    const [Endereco, setEndereco] = useState('')
-    const [Complemento, setComplemento] = useState('')
-    const [Cep, setCep] = useState('')
-    const [Senha, setSenha] = useState('')
+    const infos = Cookies.getJSON('infoPerfil');
 
     const cookie = Cookies.getJSON('Login');
 
     let history = useHistory();
     const loadingBar = useRef(null);
+
+    const [Nome, setNome] = useState(infos.nome)
+    const [Sexo, setSexo] = useState(infos.sexo)
+    const [Nascimento, setNascimento] = useState(infos.nascimento)
+    const [Email, setEmail] = useState(infos.email)
+    const [Telefone, setTelefone] = useState(infos.telefone)
+    const [Cpf, setCpf] = useState(infos.cpf)
+    const [Rg, setRg] = useState(infos.rg)
+    const [Endereco, setEndereco] = useState(infos.endereco)
+    const [Complemento, setComplemento] = useState(infos.complemento)
+    const [Cep, setCep] = useState(infos.cep)
+
+    const alterarClick = async () => {
+
+
+
+            loadingBar.current.continuousStart();
+
+            const request = {
+                idPerfil: infos.id,
+                nome: Nome,
+                sexo: Sexo,
+                nascimento: Nascimento,
+                email: Email,
+                telefone: Telefone,
+                cpf: Cpf,
+                rg: Rg,
+                endereco: Endereco,
+                complemento: Complemento,
+                cep: Cep
+            };
+
+            const resp = await api.AlterarPerfil(request);
+
+            toast("Alterado com Sucesso 😼");
+            await loadingBar.current.complete();
+
+            window.setTimeout(() => 
+                history.push( '/perfil' ), 2000
+            );
+
+        } 
+
+
 
     return(
 
@@ -61,43 +95,91 @@ export default function AlterarCadastro() {
                         <div className= "infoAP">
 
                             <div className="linha">
+
                                 <label>Nome: </label>
-                                &nbsp; &nbsp; <input type="text" />
+                                &nbsp; &nbsp; 
+                                <input type="text" 
+                                value={Nome}
+                                onChange={x => setNome(x.target.value)}
+                                />
+
                             </div>
 
                             <div className="linha">
+
                                 <label>E-mail:</label>
-                                &nbsp; &nbsp; <input type="text" />
+                                &nbsp; &nbsp; 
+                                <input type="text" 
+                                value={Email}
+                                onChange={x => setEmail(x.target.value)}
+                                />
+
                             </div>
 
                             <div className="linha">
-                                <label>Senha: </label>
-                                &nbsp; &nbsp; <input type="password" />
+
+                                <label>Telefone: </label>
+                                &nbsp; &nbsp; 
+                                <input type="text" 
+                                value={Telefone}
+                                onChange={x => setTelefone(x.target.value)}
+                                />
+
                             </div>
-                            
+
                             <div className="linha">
+
                                 <label>CPF:</label>
-                                &nbsp; &nbsp; <input type="text" />
+                                &nbsp; &nbsp; 
+                                <input type="text" 
+                                value={Cpf}
+                                onChange={x => setCpf(x.target.value)}
+                                />
+
                             </div>
 
-                            <div className="linha">                            
+                            <div className="linha">
+
                                 <label>Data de Nascimento:</label>
-                                &nbsp; &nbsp; <input type="date" />
+                                &nbsp; &nbsp;
+                                <input type="date" 
+                                value={Nascimento}
+                                onChange={x => setNascimento(x.target.value)}
+                                />
+
                             </div>
                             
                             <div className="linha"> 
+
                                 <label>Endereço:</label>
-                                &nbsp; &nbsp; <input type="text" />
+                                &nbsp; &nbsp; 
+                                <input type="text" 
+                                value={Endereco}
+                                onChange={x => setEndereco(x.target.value)}
+                                />
+
                             </div>
                             
                             <div className="linha"> 
+
                                 <label>Complemento:</label>
-                                &nbsp; &nbsp; <input type="text" />
+                                &nbsp; &nbsp; 
+                                <input type="text" 
+                                value={Complemento}
+                                onChange={x => setComplemento(x.target.value)}
+                                />
+
                             </div>
                             
                             <div className="linha"> 
+
                                 <label>CEP:</label>
-                                &nbsp; &nbsp; <input type="text" />
+                                &nbsp; &nbsp; 
+                                <input type="text" 
+                                value={Cep}
+                                onChange={x => setCep(x.target.value)}
+                                />
+
                             </div>
                             
                             <div className="linha"> 
@@ -124,7 +206,7 @@ export default function AlterarCadastro() {
 
 
                     <div>
-                        <button className="btAP"> Salvar Informações </button>
+                        <button className="btAP" onClick={alterarClick}> Salvar Informações </button>
                     </div>
 
                 </div>

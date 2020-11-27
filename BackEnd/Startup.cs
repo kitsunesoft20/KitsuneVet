@@ -43,7 +43,8 @@ namespace kitsunevet
 
             app.UseCors(
                 x => x.AllowAnyOrigin()
-                      .AllowAnyHeader());
+                      .AllowAnyHeader()
+                      .AllowAnyMethod());
 
             app.UseHttpsRedirection();
 

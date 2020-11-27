@@ -1,9 +1,9 @@
 
 using System;
 
-namespace BackEnd.Controllers.Response
+namespace BackEnd.Controllers.Request
 {
-    public class PerfilResponse
+    public class AlterarPerfilRequest
     {
 
         public int idPerfil { get; set; }

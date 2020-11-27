@@ -52,6 +52,7 @@ export default function Perfil (){
 
         Cookies.set('infoPerfil', 
             {
+                id: resp.data.idPerfil,
                 email: resp.data.email,
                 nome: resp.data.nome,
                 sexo: resp.data.sexo,
@@ -88,7 +89,7 @@ export default function Perfil (){
 
                         <div className= "infoPerf">
 
-                            <button onClick={Click} className="btPerf"> Mostrar Informações</button>  
+                            <button onClick={Click} className="btPerf"> Atualizar Informações </button>
 
                             <div className="linha">
                                 <label>Nome: </label>
@@ -98,6 +99,11 @@ export default function Perfil (){
                             <div className="linha">
                                 <label>E-mail:</label>
                                 &nbsp; &nbsp; {infos.email} 
+                            </div>
+
+                            <div className="linha">
+                                <label>Telefone:</label>
+                                &nbsp; &nbsp; {infos.telefone}
                             </div>
                             
                             <div className="linha">
@@ -139,17 +145,11 @@ export default function Perfil (){
                     </div>
 
                     <div>
-                        <button className="btPerf">
-                            <Link to="/AlterarPerfil"> Alterar Dados Cadastrais </Link>
-                        </button>
-                    </div>
-                    
-                    <div className="PetPerf">
-                        <select >
-                            <option value="Pet"> Pet </option>
-                        </select>
-
-                        <button className="btPerf"> Alterar dados do Pet </button>
+                        <Link to="/AlterarPerfil">
+                            <button className="btPerf">
+                                Alterar Dados Cadastrais
+                            </button>
+                        </Link>
                     </div>
 
                 </div>

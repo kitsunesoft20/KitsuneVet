@@ -53,4 +53,9 @@ export default class KitsuneVetApi {
         return resp;
     }
 
+    async AlterarPerfil( req){
+        const resp = await api.put('/AlterarPerfil', req);
+        return resp;
+    }
+
 }
