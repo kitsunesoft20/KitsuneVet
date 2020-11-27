@@ -29,7 +29,7 @@ namespace kitsunevet.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseMySql("server=localhost;user id=root;password=1234;database=veterinario", x => x.ServerVersion("8.0.21-mysql"));
+                optionsBuilder.UseMySql("server=localhost;user id=admin;password=Kitsunevet1001;database=veterinario", x => x.ServerVersion("8.0.21-mysql"));
             }
         }
 
