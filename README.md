@@ -30,7 +30,7 @@ Sistema Veterinario
 Módulos:
 >• Acesso 
 >
-> Agendamentos
+>• Agendamentos
 >
 >• Perfil
 
@@ -49,6 +49,7 @@ Módulos:
 
 ### Agendamentos
 ![](https://i.imgur.com/3ZlLXEf.png)
+
 001.Após o usúario ja ter cadastrado-se ou ser logado, ele será redirecionado para a pagina home, onde terá as opções de agendamento. Em escolher serviços, o usúario vai poder escolher qual tipo de serviço ele deseja para seu Pet.
 
 001.1.1. Se o Pet estiver precisando de uma cirurgia, nós temos, basta agendar horario, citar as especificações, qual será a cirurgia e tabém as observações.
