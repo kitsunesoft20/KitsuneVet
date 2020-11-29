@@ -1,5 +1,4 @@
 
-> [color=red] 
 > # *Kitsune Soft*
 
 # *Links*
@@ -12,7 +11,7 @@
 
 # *Equipe*
 
->Nicolas Melo Plansky N°35 [color=lightgreen]
+>Nicolas Melo Plansky N°35
 >
 >Daniel Santos do Carmo N°06
 >
@@ -29,9 +28,9 @@ Sistema Veterinario
 
 ## Casos de Uso
 Módulos:
->• Acesso [color=lightgreen]
+>• Acesso 
 >
->• Agendamentos
+> Agendamentos
 >
 >• Perfil
 
